@@ -19,6 +19,7 @@ Instalación
 ************
 
 Para instalar este repositorio se realizan los siguientes pasos:
+
 - Instalar el entorno de desarrollo (XAMPP)
 - Instalar Git
 - Colocarse en la carpeta htdocs
@@ -32,6 +33,7 @@ Para trabajar
 - Antes de comenzar a trabajar o subir cambios se recomienda realizar un git pull
 
 Para subir los cambios se realizan los siguientes cambios
+
 - git pull
 - git add --all
 - git commit -m 'Mensaje sobre lo que consiste el commit'
