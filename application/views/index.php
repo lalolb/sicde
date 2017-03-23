@@ -1,0 +1,38 @@
+  <!-- =============================================== -->
+  <!-- Página o contenido principal -->
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Bienvenido al Sistema de Control Escolar
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Título de la caja</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Minimizar">
+              <i class="fa fa-minus"></i></button>
+          </div>
+        </div>
+        <div class="box-body">
+          Start creating your amazing application!
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          Footer de la caja :v
+        </div>
+        <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
