@@ -29,4 +29,12 @@ class Paginas extends CI_Controller {
 	public function alumnoModificar(){
 		$this->vista('alumnoModificar');
 	}
+
+	public function materiaCrear(){
+		$this->vista('materiaCrear');
+	}
+	
+	public function materiaModificar(){
+		$this->vista('materiaModificar');
+	}
 }
