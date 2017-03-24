@@ -20,6 +20,7 @@
         <!-- form start -->
         <form class="form-horizontal">
           <div class="box-body">
+          <h3>Datos generales</h3>
             <div class="form-group">
               <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                 <div class="col-sm-10">
@@ -198,6 +199,44 @@
                       <option value="No">No</option>
                       <option value="Si">Si</option>
                     </select>
+                </div>
+            </div>
+            <!-- /.form group -->
+
+            <div class="form-group">
+              <label for="estado" class="col-sm-2 control-label">Carrera</label>
+                <div class="col-sm-10">
+                    <select id="estado" name="estado" class="form-control">
+                      <?php
+                        foreach ($carreras as $key => $carrera) {
+                          echo "<option value='".$carrera['clave']."'>".$carrera['nombre']."</option>";
+                        }
+                      ?>
+                    </select>
+                </div>
+            </div>
+            <!-- /.form group -->
+
+            <hr>
+
+            <h3>Domicilio</h3>
+
+            <div class="form-group">
+              <label for="calle" class="col-sm-2 control-label">Calle</label>
+                <div class="col-sm-10">
+                    <input id="calle" name="calle" type="text" class="form-control" placeholder="Calle" required>
+                </div>
+            </div>
+            <!-- /.form group -->
+
+            <div class="form-group">
+              <label for="colonia" class="col-sm-2 control-label">Colonia</label>
+                <div class="col-sm-3">
+                    <input id="colonia" name="colonia" type="text" class="form-control" placeholder="Colonia" required>
+                </div>
+                <label for="cp" class="col-sm-2 control-label">C.P.</label>
+                <div class="col-sm-3">
+                    <input id="cp" name="cp" type="text" class="form-control" placeholder="C.P." required>
                 </div>
             </div>
             <!-- /.form group -->

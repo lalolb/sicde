@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Paginas extends CI_Controller {
 
+	public function __construct(){
+        parent::__construct();
+        $this->load->model('Carreras_model');
+    }
+
 	public function vista($pagina = 'index', $data = null){
 
 		//Revisamos si hay una sesión activa
@@ -23,7 +28,8 @@ class Paginas extends CI_Controller {
 	}
 
 	public function crearAlumno(){
-		$this->vista('alumnoCrear');
+		$data['carreras'] = $this->Carreras_model->getCarreras();
+		$this->vista('alumnoCrear',$data);
 	}
 
 	public function alumnoModificar(){
@@ -33,7 +39,7 @@ class Paginas extends CI_Controller {
 	public function materiaCrear(){
 		$this->vista('materiaCrear');
 	}
-	
+
 	public function materiaModificar(){
 		$this->vista('materiaModificar');
 	}

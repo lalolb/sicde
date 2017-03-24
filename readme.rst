@@ -30,11 +30,16 @@ Para instalar este repositorio se realizan los siguientes pasos:
 *************
 Para trabajar
 *************
+
+IMPORTANTE
+
+- Procurar no trabajar en el mismo archivo para evitar conflictos.
 - Antes de comenzar a trabajar o subir cambios se recomienda realizar un git pull
 
 Para subir los cambios se realizan los siguientes cambios
 
-- git pull
 - git add --all
 - git commit -m 'Mensaje sobre lo que consiste el commit'
+- git pull (Es importante actualizar el proyecto)
+- Comprobar si hay conflictos y resolverlos
 - git push
