@@ -43,4 +43,12 @@ class Paginas extends CI_Controller {
 	public function materiaModificar(){
 		$this->vista('materiaModificar');
 	}
+
+	public function grupoCrear(){
+		$this->vista('grupoCrear');
+	}
+
+	public function grupoModificar(){
+		$this->vista('grupoModificar');
+	}
 }
