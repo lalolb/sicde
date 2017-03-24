@@ -25,4 +25,8 @@ class Paginas extends CI_Controller {
 	public function crearAlumno(){
 		$this->vista('alumnoCrear');
 	}
+
+	public function alumnoModificar(){
+		$this->vista('alumnoModificar');
+	}
 }
