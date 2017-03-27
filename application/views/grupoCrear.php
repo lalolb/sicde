@@ -27,8 +27,8 @@
         <div class="box-header with-border">
           <h3 class="box-title">Alta de un grupo</h3>
         </div>
-        <div class="box-body">
           <form class="form-horizontal">
+            <div class="box-body">
              <script type="text/javascript">
                  $(document).ready(function(){
                   var options = {
@@ -58,8 +58,8 @@
 
             <div class="form-group">
               <label for="nombre" class="col-sm-2 control-label">Profesor</label>
-                <div class="col-sm-5">        
-                  <select name="nombreP" id="nombreP" class="form-control" required>
+                <div class="col-sm-8">        
+                  <select name="nombreP" id="nombreP" class="form-control select2" style="width: 100%" required>
                    <option></option>
                     <option value="ico">ITZEL</option>
                     <option value="ici">ANITA</option>
@@ -72,8 +72,8 @@
 
             <div class="form-group">
               <label for="amaterno" class="col-sm-2 control-label">Materia</label>
-              <div class="col-sm-5">
-                <select name="tipo" id="tipo" class="form-control" required>
+              <div class="col-sm-8">
+                <select name="tipo" id="tipo" class="form-control select2" style="width: 100%" required>
                   <option></option>
                   <option value="ico">gestores</option>
                   <option value="ici">iccso</option>

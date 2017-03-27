@@ -18,13 +18,13 @@
           <h3 class="box-title">Alta de un alumno</h3>
         </div>
         <!-- form start -->
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="<?php echo site_url()?>/Alumnos/insertarAlumno" method="post">
           <div class="box-body">
           <h3>Datos generales</h3>
             <div class="form-group">
               <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+                    <input type="text" class="form-control" id="nombre" name="nombreA" placeholder="Nombre" required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -48,7 +48,7 @@
             <div class="form-group">
               <label for="nacimiento" class="col-sm-2 control-label">Fecha de nacimiento</label>
                 <div class="col-sm-10">
-                    <input name="fecha_nacimiento" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask required>
+                    <input name="fecha_nacimiento" type="text" class="form-control" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -128,7 +128,7 @@
                       <option value="Colima">Colima</option>
                       <option value="Chiapas">Chiapas</option>
                       <option value="Chihuahua">Chihuahua</option>
-                      <option value="Ciudad de México">Ciudad de México</option>
+                      <option value="CDMX">Ciudad de México</option>
                       <option value="Durango">Durango</option>
                       <option value="Guanajuato">Guanajuato</option>
                       <option value="Guerrero">Guerrero</option>
@@ -204,9 +204,9 @@
             <!-- /.form group -->
 
             <div class="form-group">
-              <label for="estado" class="col-sm-2 control-label">Carrera</label>
+              <label for="carrera" class="col-sm-2 control-label">Carrera</label>
                 <div class="col-sm-10">
-                    <select id="estado" name="estado" class="form-control">
+                    <select id="carrera" name="carrera" class="form-control">
                       <?php
                         foreach ($carreras as $key => $carrera) {
                           echo "<option value='".$carrera['clave']."'>".$carrera['nombre']."</option>";
@@ -222,9 +222,9 @@
             <h3>Domicilio</h3>
 
             <div class="form-group">
-              <label for="calle" class="col-sm-2 control-label">Calle</label>
+              <label for="calle" class="col-sm-2 control-label">Calle y número</label>
                 <div class="col-sm-10">
-                    <input id="calle" name="calle" type="text" class="form-control" placeholder="Calle" required>
+                    <input id="calle" name="calle" type="text" class="form-control" placeholder="Calle y número" required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -236,7 +236,64 @@
                 </div>
                 <label for="cp" class="col-sm-2 control-label">C.P.</label>
                 <div class="col-sm-3">
-                    <input id="cp" name="cp" type="text" class="form-control" placeholder="C.P." required>
+                    <input id="cp" name="cp" type="number" class="form-control" placeholder="C.P." required>
+                </div>
+            </div>
+            <!-- /.form group -->
+
+            <div class="form-group">
+              <label for="telefono" class="col-sm-2 control-label">Tel.</label>
+                <div class="col-sm-4">
+                    <input id="telefono" name="telefono" type="number" class="form-control" placeholder="Teléfono" required>
+                </div>
+            </div>
+            <!-- /.form group -->
+
+            <div class="form-group">
+              <label for="paisD" class="col-sm-2 control-label">País</label>
+              <div class="col-sm-2">
+                    <input id="paisD" name="paisD" type="text" class="form-control" placeholder="País" required>
+              </div>
+              <label for="estadoD" class="col-sm-2 control-label">Estado</label>
+                <div class="col-sm-2">
+                    <select id="estadoD" name="estadoD" class="form-control">
+                      <option value="Aguascalientes">Aguascalientes</option>
+                      <option value="Baja California">Baja California</option>
+                      <option value="Baja California Sur">Baja California Sur</option>
+                      <option value="Campeche">Campeche</option>
+                      <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+                      <option value="Colima">Colima</option>
+                      <option value="Chiapas">Chiapas</option>
+                      <option value="Chihuahua">Chihuahua</option>
+                      <option value="CDMX">Ciudad de México</option>
+                      <option value="Durango">Durango</option>
+                      <option value="Guanajuato">Guanajuato</option>
+                      <option value="Guerrero">Guerrero</option>
+                      <option value="Hidalgo">Hidalgo</option>
+                      <option value="Jalisco">Jalisco</option>
+                      <option value="México" selected>México</option>
+                      <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
+                      <option value="Morelos">Morelos</option>
+                      <option value="Nayarit">Nayarit</option>
+                      <option value="Nuevo León">Nuevo León</option>
+                      <option value="Oaxaca">Oaxaca</option>
+                      <option value="Puebla">Puebla</option>
+                      <option value="Querétaro">Querétaro</option>
+                      <option value="Quintana Roo">Quintana Roo</option>
+                      <option value="San Luis Potosí">San Luis Potosí</option>
+                      <option value="Sinaloa">Sinaloa</option>
+                      <option value="Sonora">Sonora</option>
+                      <option value="Tabasco">Tabasco</option>
+                      <option value="Tamaulipas">Tamaulipas</option>
+                      <option value="Tlaxcala">Tlaxcala</option>
+                      <option value="Veracruz">Veracruz</option>
+                      <option value="Yucatán">Yucatán</option>
+                      <option value="Zacatecas">Zacatecas</option>
+                    </select>
+                </div>
+                <label for="municipioD" class="col-sm-2 control-label">Municipio</label>
+                <div class="col-sm-2">
+                    <input id="municipioD" name="municipioD" type="text" class="form-control" placeholder="Municipio" required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -244,7 +301,7 @@
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button type="submit" class="btn btn-info pull-right">Guardar</button>
+            <button type="submit" class="btn btn-info pull-right">Enviar</button>
           </div>
           <!-- /.box-footer -->
         </form>
@@ -264,7 +321,7 @@
 <script type="text/javascript">
   $(function () {
     //Datemask dd/mm/yyyy
-    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    $("#datemask").inputmask("yyyy/mm/dd", {"placeholder": "yyyy/mm/dd"});
     //Datemask2 mm/dd/yyyy
     $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
     //Money Euro
@@ -303,4 +360,11 @@
       $("#help-block-CURP").text('Formato de CURP incorrecto');
     }
   }
+
+  $.ajax({
+    url: host+"api/controlador/user",
+    method: "PUT",
+  }).done(function() {
+    alert("Ya acabe");
+  });
 </script>
