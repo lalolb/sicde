@@ -28,7 +28,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo site_url(); ?>/Paginas/crearAlumno"><i class="fa fa-circle-o"></i>Alta</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i>Modificar</a></li>
+            <li><a href="<?php echo site_url(); ?>/Paginas/alumnoBuscar/Modificar"><i class="fa fa-circle-o"></i>Modificar</a></li>
             <li><a href=""><i class="fa fa-circle-o"></i>Consultar</a></li>
             <li><a href=""><i class="fa fa-circle-o"></i>Eliminar</a></li>
           </ul>

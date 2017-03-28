@@ -6,6 +6,7 @@ class Paginas extends CI_Controller {
 	public function __construct(){
         parent::__construct();
         $this->load->model('Carreras_model');
+        $this->load->model('Alumnos_model');
         $this->load->model('Materias_model');
         $this->load->model('Grupos_model');
         $this->load->model('Profesores_model');
@@ -35,8 +36,17 @@ class Paginas extends CI_Controller {
 		$this->vista('alumnoCrear',$data);
 	}
 
+	public function alumnoBuscar($accion){
+		$data['accion'] = $accion;
+		$data['alumnos'] = $this->Alumnos_model->getAlumnos();
+		$this->vista('alumnoBuscar',$data);
+	}
+
 	public function alumnoModificar(){
-		$this->vista('alumnoModificar');
+		$data['clave_alumno'] = $this->input->get('alumno');
+		$data['alumno'] = $this->Alumnos_model->getAlumno($data['clave_alumno']);
+		$data['carreras'] = $this->Carreras_model->getCarreras();
+		$this->vista('alumnoModificar',$data);
 	}
 
 	public function materiaCrear(){
