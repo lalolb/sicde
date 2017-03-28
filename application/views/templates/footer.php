@@ -1,5 +1,5 @@
  <footer class="main-footer">
-    <strong><?php echo $nombre?></strong>
+    <strong>SICDE - Sistema de Control Escolar</strong>
   </footer>
 </div>
 <!-- ./wrapper -->

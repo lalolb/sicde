@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Alumnos
+        Profesores
       </h1>
     </section>
 
@@ -15,10 +15,10 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Alta de un alumno</h3>
+          <h3 class="box-title">Alta de un profesor</h3>
         </div>
         <!-- form start -->
-        <form class="form-horizontal" action="<?php echo site_url()?>/Alumnos/insertarAlumno" method="post">
+        <form class="form-horizontal" action="<?php echo site_url()?>/Profesores/insertarProfesor" method="post">
           <div class="box-body">
           <h3>Datos generales</h3>
             <div class="form-group">
@@ -178,9 +178,9 @@
             <!-- /.form group -->
 
             <div class="form-group">
-              <label for="tutor" class="col-sm-2 control-label">Padre/Madre o Tutor</label>
+              <label for="tutor" class="col-sm-2 control-label">Contacto de Emergencia</label>
                 <div class="col-sm-10">
-                    <input id="tutor" name="tutor" type="text" class="form-control" placeholder="Padre/Madre o Tutor" required>
+                    <input id="tutor" name="tutor" type="text" class="form-control" placeholder="Contacto de Emergencia" required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -198,20 +198,6 @@
                     <select id="dialecto_i" name="dialecto_i" class="form-control">
                       <option value="No">No</option>
                       <option value="Si">Si</option>
-                    </select>
-                </div>
-            </div>
-            <!-- /.form group -->
-
-            <div class="form-group">
-              <label for="carrera" class="col-sm-2 control-label">Carrera</label>
-                <div class="col-sm-10">
-                    <select id="carrera" name="carrera" class="form-control">
-                      <?php
-                        foreach ($carreras as $key => $carrera) {
-                          echo "<option value='".$carrera['clave']."'>".$carrera['nombre']."</option>";
-                        }
-                      ?>
                     </select>
                 </div>
             </div>

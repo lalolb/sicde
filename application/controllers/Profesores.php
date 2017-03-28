@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Alumnos extends CI_Controller {
+class Profesores extends CI_Controller {
 
 	public function __construct(){
         parent::__construct();
-        $this->load->model('Alumnos_model');
+        $this->load->model('Profesores_model');
     }
 
-    public function insertarAlumno(){
+    public function insertarProfesor(){
     	//Obtenemos los datos generales
     	$generales['nombre']=$this->input->post('nombreA');
     	$generales['paterno']=$this->input->post('apaterno');
@@ -37,10 +37,7 @@ class Alumnos extends CI_Controller {
 		$domicilio['estado'] = '';
 		$domicilio['municipio'] = '';
 
-		//Guardamos la carrera del alumno
-		$alumno['cve_carrera'] = $this->input->post('carrera');
-
-		$result = $this->Alumnos_model->postAlumno($generales, $domicilio, $alumno);
+		$result = $this->Profesores_model->postProfesor($generales, $domicilio);
 		redirect($this->config->site_url()."/Paginas/vista/exito");
 
     }
