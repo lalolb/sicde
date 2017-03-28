@@ -19,7 +19,7 @@
           <h3 class="box-title">Alta de una materia</h3>
         </div>
         <div class="box-body">
-          <form class="form-horizontal">
+          <form class="form-horizontal" action="<?php echo site_url()?>/Materias/insertarMateria" method="post">
             <div class="form-group">
               <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                 <div class="col-sm-8">
@@ -45,23 +45,24 @@
            <div class="form-group">
               <label for="amaterno" class="col-sm-2 control-label">Créditos</label>
                 <div class="col-sm-1">
-                    <input type="text" class="form-control"  id="creditos" name="creditos" placeholder=""  disabled="">
+                    <input type="text" class="form-control"  id="creditos" name="creditos" placeholder="" readonly >
                 </div>
             </div>
 
             
-        <div class="form-group">
-                 <label for="amaterno" class="col-sm-2 control-label">Carrera</label>
-                 <div class="col-sm-2">
-                  <select name="tipo" class="form-control" required>
-                    <option value="ico" selected>ICO</option>
-                    <option value="ici">ICI</option>
-                    <option value="iel">IEL</option>
-                    <option value="ime">IME</option>
-                    <option value="ises">ISES</option>
-                  </select>
-                  </div>
-      </div>            
+         <div class="form-group">
+              <label for="carrera" class="col-sm-2 control-label">Carrera</label>
+                <div class="col-sm-8">
+                    <select id="carrera" name="carrera" class="form-control">
+                      <?php
+                        foreach ($carreras as $key => $carrera) {
+                          echo "<option value='".$carrera['clave']."'>".$carrera['nombre']."</option>";
+                        }
+                      ?>
+                    </select>
+                </div>
+            </div>
+
         </div>
         <!-- /.box-body -->
         <div class="box-footer">

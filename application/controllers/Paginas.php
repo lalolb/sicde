@@ -37,7 +37,8 @@ class Paginas extends CI_Controller {
 	}
 
 	public function materiaCrear(){
-		$this->vista('materiaCrear');
+		$data['carreras'] = $this->Carreras_model->getCarreras();
+		$this->vista('materiaCrear', $data);
 	}
 
 	public function materiaModificar(){
