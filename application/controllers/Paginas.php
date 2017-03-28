@@ -6,6 +6,8 @@ class Paginas extends CI_Controller {
 	public function __construct(){
         parent::__construct();
         $this->load->model('Carreras_model');
+        $this->load->model('Materias_model');
+        $this->load->model('Grupos_model');
     }
 
 	public function vista($pagina = 'index', $data = null){
@@ -42,14 +44,22 @@ class Paginas extends CI_Controller {
 	}
 
 	public function materiaModificar(){
-		$this->vista('materiaModificar');
+		$data['materias'] = $this->Materias_model->getMaterias();
+		$this->vista('materiaBuscarModificar',$data);
 	}
 
 	public function grupoCrear(){
-		$this->vista('grupoCrear');
+		$data['materias']= $this->Materias_model->getMaterias();
+		$this->vista('grupoCrear', $data);
 	}
 
 	public function grupoModificar(){
 		$this->vista('grupoModificar');
 	}
+
+	public function buscarMateria(){
+        $clave =$this->input->get('materia');
+        $data['materia'] =$this->Materias_model->buscarMateria($clave);
+        $this->vista('materiaModificar',$data);
+    }
 }
