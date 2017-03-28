@@ -1,5 +1,5 @@
  <footer class="main-footer">
-    <strong>SICDE - Sistema de Control Escolar</strong>
+    <strong>SICDE © 2017  </strong>
   </footer>
 </div>
 <!-- ./wrapper -->

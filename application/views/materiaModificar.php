@@ -16,11 +16,11 @@
           <h3 class="box-title">Modificar una materia</h3>
         </div>
         <div class="box-body">
-          <form class="form-horizontal">
+          <form class="form-horizontal" action="<?php echo site_url()?>/Materias/actualizarMateria" method="post">
             <div class="form-group">
               <label for="nombre" class="col-sm-2 control-label">Nombre</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php echo $materia['nombre'] ?>" required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -42,7 +42,7 @@
            <div class="form-group">
               <label for="amaterno" class="col-sm-2 control-label">Créditos</label>
                 <div class="col-sm-1">
-                    <input type="text" class="form-control"  id="creditos" name="creditos" placeholder=""  disabled="">
+                    <input type="text" class="form-control"  id="creditos" name="creditos" placeholder="" value="" readonly>
                 </div>
             </div>
 

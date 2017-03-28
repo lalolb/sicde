@@ -10,4 +10,18 @@ class Materias_model extends CI_Model {
 		
 	}
 
+	public function getMaterias(){
+		$result = $this->db->get('materia');
+		return $result->result_array();
+	}
+
+	public function buscarMateria($clave){
+		$this->db->where('clave', $clave);	
+		$result = $this->db->get('materia');
+		return $result->row_array();	
+	          
+                
+         
+	}
+
 }

@@ -27,7 +27,7 @@
         <div class="box-header with-border">
           <h3 class="box-title">Alta de un grupo</h3>
         </div>
-          <form class="form-horizontal">
+          <form class="form-horizontal" action="<?php echo site_url()?>/Grupos/insertarGrupo" method="post">
             <div class="box-body">
              <script type="text/javascript">
                  $(document).ready(function(){
@@ -38,7 +38,7 @@
                         title: '',
                         minutesInterval: 30
                   };
-                   $("#tipo").select2({
+                   $("#materia").select2({
                         placeholder: "Selecciona una materia"
                        });
                    $("#nombreP").select2({
@@ -61,11 +61,11 @@
                 <div class="col-sm-8">        
                   <select name="nombreP" id="nombreP" class="form-control select2" style="width: 100%" required>
                    <option></option>
-                    <option value="ico">ITZEL</option>
-                    <option value="ici">ANITA</option>
-                    <option value="iel">RUBEN</option>
-                    <option value="ime">CARLOS</option>
-                    <option value="ises">VYASA</option>
+                    <option value="1">ITZEL</option>
+                    <option value="2">ANITA</option>
+                    <option value="3">RUBEN</option>
+                    <option value="4">CARLOS</option>
+                    <option value="5">VYASA</option>
                   </select>
                   </div>
             </div>
@@ -73,29 +73,40 @@
             <div class="form-group">
               <label for="amaterno" class="col-sm-2 control-label">Materia</label>
               <div class="col-sm-8">
-                <select name="tipo" id="tipo" class="form-control select2" style="width: 100%" required>
-                  <option></option>
-                  <option value="ico">gestores</option>
-                  <option value="ici">iccso</option>
-                  <option value="iel">diseño</option>
-                  <option value="ime">tipos</option>
-                  <option value="ises">seguridad</option>
+                <select name="materia" id="materia" class="form-control select2" style="width: 100%" required>
+                     <option > </option>
+                      <?php
+                        foreach ($materias as $key => $materia) {
+                          echo "<option value='".$materia['clave']."'>".$materia['nombre']."</option>";
+                        }
+                      ?>
                 </select>
+              </div>
+      </div>  
+
+      <div class="form-group">
+              <label for="amaterno" class="col-sm-2 control-label">Capacidad</label>
+              <div class="col-sm-2">
+                <input type="number" class="form-control" id="capacidad" name="capacidad" placeholder="# alumnos" required>
+
               </div>
       </div>  
      <!-- -->
 
             <div class="form-group">
               <div class="col-sm-1">
-                <input type="checkbox" id="lunes" name="lunes" class="minimal-green" > <b>Lunes</b><br>
+                <input type="checkbox" id="lunes" name="dias[]" class="minimal-green" value="lunes"> <b>Lunes</b><br>
               </div>
                
 
               <label for="apaterno" class="col-sm-2 control-label">Hora inicio</label>
                 <div class="col-sm-2">
+                    
                     <input type="text" class="form-control timepicker" id="lunesHi" name="lunesHi">
+                   
                 </div>
 
+                
                 <label for="apaterno" class="col-sm-2 control-label">Hora final</label>
                 <div class="col-sm-2">
                     <input type="text" class="form-control" id="lunesHf" name="lunesHf">
@@ -105,7 +116,7 @@
      <!-- -->
               <div class="form-group">
               <div class="col-sm-1">
-                 <input type="checkbox" name="martes" class="minimal-green"> Martes<br>
+                 <input type="checkbox" name="dias[]" class="minimal-green" value="martes"> Martes<br>
               </div>
          
                 <label for="apaterno" class="col-sm-2 control-label">Hora inicio</label>
@@ -123,7 +134,7 @@
              <!-- -->
               <div class="form-group">
               <div class="col-sm-1">
-                 <input type="checkbox" name="miercoles" class="minimal-green"> Miercoles<br>
+                 <input type="checkbox" name="dias[]" class="minimal-green" value="miercoles"> Miercoles<br>
               </div>
          
                 <label for="apaterno" class="col-sm-2 control-label">Hora inicio</label>
@@ -140,7 +151,7 @@
                <!-- -->
               <div class="form-group">
               <div class="col-sm-1">
-                 <input type="checkbox" name="jueves" class="minimal-green"> Jueves<br>
+                 <input type="checkbox" name="dias[]" class="minimal-green" value="jueves"> Jueves<br>
               </div>
          
                 <label for="apaterno" class="col-sm-2 control-label">Hora inicio</label>
@@ -157,7 +168,7 @@
                <!-- -->
               <div class="form-group">
               <div class="col-sm-1">
-                 <input type="checkbox" name="viernes" class="minimal-green"> Viernes<br>
+                 <input type="checkbox" name="dias[]" class="minimal-green" value="viernes"> Viernes<br>
               </div>
          
                 <label for="apaterno" class="col-sm-2 control-label">Hora inicio</label>
@@ -174,7 +185,7 @@
             <!-- -->
               <div class="form-group">
               <div class="col-sm-1">
-                 <input type="checkbox" name="sabado" class="minimal-green"> Sabado<br>
+                 <input type="checkbox" name="dias[]" class="minimal-green" value="sabado"> Sabado<br>
               </div>
          
                 <label for="apaterno" class="col-sm-2 control-label">Hora inicio</label>
@@ -206,12 +217,3 @@
   </div>
   <!-- /.content-wrapper -->
 
-<script type="text/javascript"> 
-function calcula(){
-  var hp = parseInt($('#hpracticas').val());
-  var ht = parseInt($('#hteoricas').val());
-  var creditos = (ht*2)+hp;
-  console.log(creditos);
-  $('#creditos').val(creditos);
-}
-</script>

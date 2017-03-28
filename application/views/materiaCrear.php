@@ -1,6 +1,10 @@
   <!-- =============================================== -->
   <!-- Página o contenido principal -->
   <!-- Content Wrapper. Contains page content -->
+  <script src="<?php echo base_url() ?>assets/select2/dist/js/select2.min.js"></script>
+  <link rel="stylesheet"  type="text/css"  href="<?php echo base_url() ?>assets/select2/dist/css/select2.min.css">
+
+
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -54,6 +58,7 @@
               <label for="carrera" class="col-sm-2 control-label">Carrera</label>
                 <div class="col-sm-8">
                     <select id="carrera" name="carrera" class="form-control">
+                         <option > </option>
                       <?php
                         foreach ($carreras as $key => $carrera) {
                           echo "<option value='".$carrera['clave']."'>".$carrera['nombre']."</option>";
@@ -77,6 +82,16 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <script type="text/javascript">
+                 $(document).ready(function(){
+                 
+                   $("#carrera").select2({
+                        placeholder: "Selecciona una carrera"
+                       });
+                  });
+
+ </script>
 
 <script type="text/javascript"> 
 function calcula(){

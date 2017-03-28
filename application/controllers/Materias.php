@@ -18,5 +18,12 @@ class Materias extends CI_Controller {
 
     	
 		$result = $this->Materias_model->crearMateria($datos);
+        redirect($this->config->site_url());
     }
+
+    public function buscarMateria(){
+        $clave =$this->input->get('materia');
+        $materia =$this->Materias_model->buscarMateria($clave);
+    }
+
 }

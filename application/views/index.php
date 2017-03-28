@@ -15,19 +15,33 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Título de la caja</h3>
+
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Minimizar">
               <i class="fa fa-minus"></i></button>
           </div>
         </div>
-        <div class="box-body">
-          Start creating your amazing application!
-        </div>
-        <!-- /.box-body -->
+
+<table border="0px"> <!-- Lo cambiaremos por CSS -->
+           <tr>
+              <td><br> <br> <br> <br></td>
+              
+          </tr>
+
+           <tr>
+              <td><h4><font color="gray">  Haz clic en alguna opción del menú para realizar cambios.</font></h4></td>
+              
+          </tr>
+          <tr>
+              <td><br>  <br> <br><br></td>
+              
+          </tr>
+        </table>
+
+              <!-- /.box-body -->
         <div class="box-footer">
-          Footer de la caja :v
+      
         </div>
         <!-- /.box-footer-->
       </div>
