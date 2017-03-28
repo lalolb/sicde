@@ -1,4 +1,4 @@
-  <script src="<?php echo base_url() ?>assets/select2/dist/js/select2.min.js"></script>
+<script src="<?php echo base_url() ?>assets/select2/dist/js/select2.min.js"></script>
   <link rel="stylesheet"  type="text/css"  href="<?php echo base_url() ?>assets/select2/dist/css/select2.min.css">
 
   <script src="<?php echo base_url() ?>assets/wickedpicker/dist/wickedpicker.min.js"></script>
@@ -25,7 +25,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Alta de un grupo</h3>
+          <h3 class="box-title">Modificar un grupo</h3>
         </div>
           <form class="form-horizontal" action="<?php echo site_url()?>/Grupos/insertarGrupo" method="post">
             <div class="box-body">
@@ -178,6 +178,28 @@
 
                   
         </div>
+
+<?php
+
+$dias = explode(",", "Lunes,7:00,9:00,Miercoles,7:00,9:00,Viernes,7:00,9:00");
+
+for ($i=0; $i < count($dias); $i++) { 
+  if($dias[$i]=="Lunes"){
+    echo "<script>$('#lunes').prop('checked', true);</script>";
+    echo "<input type=\"hidden\" name=\"asd\" id=\"lunHI\" value=\"".$dias[$i+1]."\">";
+    echo "<input type=\"hidden\" name=\"asd\" id=\"lunHF\" value=\"".$dias[$i+2]."\">";
+    $i = $i +2;
+  }
+
+  if($dias[$i]=="Miercoles"){
+    echo "<script>$('#miercoles').prop('checked', true);</script>";
+    echo "<input type=\"hidden\" name=\"asd\" id=\"mieHI\" value=\"".$dias[$i+1]."\">";
+    echo "<input type=\"hidden\" name=\"asd\" id=\"mieHF\" value=\"".$dias[$i+2]."\">";
+    $i = $i +2;
+  }
+}
+?>
+        
 
  <script type="text/javascript">
                  $(document).ready(function(){

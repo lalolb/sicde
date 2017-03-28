@@ -19,4 +19,11 @@ class Profesores_model extends CI_Model{
 		return $this->db->insert('profesor', $profesor);
 	}
 
+	public function getProfesores(){
+		$this->db->select('*');    
+		$this->db->from('datos_personales');
+		$this->db->join('profesor', 'datos_personales.rfc = profesor.clave');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 }

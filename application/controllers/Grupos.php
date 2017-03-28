@@ -23,45 +23,47 @@ class Grupos extends CI_Controller {
              if($variable[$i] == "lunes"){
                 $hi=  $this->input->post('lunesHi');
                 $hf=  $this->input->post('lunesHf');
-                $horario = $horario."Lunes de ".$hi." a ".$hf."<br>";                
+                $horario = $horario."Lunes".",".$hi.",".$hf.",";                
                 
             }
 
              if($variable[$i] == "martes"){
                 $hi=  $this->input->post('martesHi');
                 $hf=  $this->input->post('martesHf');
-                $horario = $horario."Martes de ".$hi." a ".$hf."<br>";
+                $horario = $horario."Martes".",".$hi.",".$hf.",";
              }
 
               if($variable[$i] == "miercoles"){
                 $hi=  $this->input->post('miercolesHi');
                 $hf=  $this->input->post('miercolesHf');
-                $horario = $horario."Miércoles de ".$hi." a ".$hf."<br>";
+                $horario = $horario."Miércoles".",".$hi.",".$hf.",";
              }
 
               if($variable[$i] == "jueves"){
                 $hi=  $this->input->post('juevesHi');
                 $hf=  $this->input->post('juevesHf');
-                $horario = $horario."Jueves de ".$hi." a ".$hf."<br>";
+                $horario = $horario."Jueves".",".$hi.",".$hf.",";
              }
               if($variable[$i] == "viernes"){
                 $hi=  $this->input->post('viernesHi');
                 $hf=  $this->input->post('viernesHf');
-                $horario = $horario."Viernes de ".$hi." a ".$hf."<br>";
+                $horario = $horario."Viernes".",".$hi.",".$hf.",";
              }
               if($variable[$i] == "sabado"){
                 $hi=  $this->input->post('sabadoHi');
                 $hf=  $this->input->post('sabadoHf');
-                $horario = $horario."Sabado de ".$hi." a ".$hf."<br>";
+                $horario = $horario."Sabado".",".$hi.",".$hf.",";
              }
         }
 
-             echo $horario;
+           //  echo $horario;
              $datos['horario'] = $horario;
              $datos['capacidad'] =  $this->input->post('capacidad');
              $datos['cve_materia'] = $this->input->post('materia');
-             
-        //    $result = $this->Grupos_model->crearGrupo($datos);
+             $datos['cve_profesor'] = $this->input->post('nombreP');
+             $result = $this->Grupos_model->crearGrupo($datos);
+            redirect($this->config->site_url()."/Paginas/vista/exito");
+
 
     }
 

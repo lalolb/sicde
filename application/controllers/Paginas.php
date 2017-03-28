@@ -8,6 +8,7 @@ class Paginas extends CI_Controller {
         $this->load->model('Carreras_model');
         $this->load->model('Materias_model');
         $this->load->model('Grupos_model');
+        $this->load->model('Profesores_model');
     }
 
 	public function vista($pagina = 'index', $data = null){
@@ -50,7 +51,9 @@ class Paginas extends CI_Controller {
 
 	public function grupoCrear(){
 		$data['materias']= $this->Materias_model->getMaterias();
+		$data['profesores'] = $this->Profesores_model->getProfesores();
 		$this->vista('grupoCrear', $data);
+
 	}
 
 	public function grupoModificar(){
@@ -60,6 +63,7 @@ class Paginas extends CI_Controller {
 	public function buscarMateria(){
         $clave =$this->input->get('materia');
         $data['materia'] =$this->Materias_model->buscarMateria($clave);
+        $data['carreras'] = $this->Carreras_model->getCarreras();
         $this->vista('materiaModificar',$data);
     }
 }

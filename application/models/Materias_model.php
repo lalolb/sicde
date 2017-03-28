@@ -19,9 +19,12 @@ class Materias_model extends CI_Model {
 		$this->db->where('clave', $clave);	
 		$result = $this->db->get('materia');
 		return $result->row_array();	
-	          
-                
-         
-	}
+	   
+    }
 
+
+    public function modificarMateria($datos, $clave){
+    	$this->db->where('clave', $clave);
+    	$this->db->update('materia', $datos);
+    }
 }
