@@ -16,11 +16,11 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Elige la materia a modificar</h3>
+          <h3 class="box-title">Buscar Materias</h3>
         </div>
 
         <div class="box-body">
-          <form class="form-horizontal" action="<?php echo site_url()?>/Paginas/buscarMateria" method="get">
+          <form class="form-horizontal" action="<?php echo site_url('/Paginas/'.$accion.'Materia')?>" method="get">
            <div class="form-group">
               <label for="materia" class="col-sm-2 control-label">Materia</label>
                 <div class="col-sm-7">

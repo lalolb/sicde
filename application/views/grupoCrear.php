@@ -69,7 +69,7 @@
      <!-- -->
 
             <div class="form-group">
-              <div class="col-sm-1">
+              <div class="col-sm-2">
                 <input type="checkbox" id="lunes" name="dias[]" class="minimal-green" value="lunes"> <b>Lunes</b><br>
               </div>
                
@@ -90,8 +90,8 @@
 
      <!-- -->
               <div class="form-group">
-              <div class="col-sm-1">
-                 <input type="checkbox" name="dias[]"  id="martes" class="minimal-green" value="martes"> Martes<br>
+              <div class="col-sm-2">
+                 <input type="checkbox" name="dias[]"  id="martes" class="minimal-green" value="martes"> <b>Martes</b><br>
               </div>
          
                 <label for="apaterno" class="col-sm-2 control-label">Hora inicio</label>
@@ -108,8 +108,8 @@
 
              <!-- -->
               <div class="form-group">
-              <div class="col-sm-1">
-                 <input type="checkbox" name="dias[]" id="miercoles" class="minimal-green" value="miercoles"> Miercoles<br>
+              <div class="col-sm-2">
+                 <input type="checkbox" name="dias[]" id="miercoles" class="minimal-green" value="miercoles"><b>Miercoles</b><br>
               </div>
          
                 <label for="apaterno" class="col-sm-2 control-label">Hora inicio</label>
@@ -125,8 +125,8 @@
 
                <!-- -->
               <div class="form-group">
-              <div class="col-sm-1">
-                 <input type="checkbox" name="dias[]" id="jueves" class="minimal-green" value="jueves"> Jueves<br>
+              <div class="col-sm-2">
+                 <input type="checkbox" name="dias[]" id="jueves" class="minimal-green" value="jueves"> <b>Jueves</b><br>
               </div>
          
                 <label for="apaterno" class="col-sm-2 control-label">Hora inicio</label>
@@ -142,8 +142,8 @@
 
                <!-- -->
               <div class="form-group">
-              <div class="col-sm-1">
-                 <input type="checkbox" name="dias[]" id="viernes" class="minimal-green" value="viernes"> Viernes<br>
+              <div class="col-sm-2">
+                 <input type="checkbox" name="dias[]" id="viernes" class="minimal-green" value="viernes"><b> Viernes </b><br>
               </div>
          
                 <label for="apaterno" class="col-sm-2 control-label">Hora inicio</label>
@@ -159,8 +159,8 @@
 
             <!-- -->
               <div class="form-group">
-              <div class="col-sm-1">
-                 <input type="checkbox" name="dias[]" id="sabado" class="minimal-green" value="sabado"> Sabado<br>
+              <div class="col-sm-2">
+                 <input type="checkbox" name="dias[]" id="sabado" class="minimal-green" value="sabado"><b> Sabado </b><br>
               </div>
          
                 <label for="apaterno" class="col-sm-2 control-label">Hora inicio</label>
@@ -172,21 +172,22 @@
                 <div class="col-sm-2">
                     <input type="text" class="form-control" id="sabadoHf" name="sabadoHf">
                 </div>
-            </div>
-            
-
-
-                  
+            </div>    
         </div>
+
+
+
 
  <script type="text/javascript">
                  $(document).ready(function(){
+                  var hora = $("#lun").val();
                   var options = {
                         now: "7:00",
                         upArrow: 'wickedpicker__controls__control-up', 
                         downArrow: 'wickedpicker__controls__control-down',
                         title: '',
-                        minutesInterval: 30
+                        minutesInterval: 30,
+                        twentyFour: true
                   };
                    $("#materia").select2({
                         placeholder: "Selecciona una materia"

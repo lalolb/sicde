@@ -6,6 +6,8 @@ class Materias extends CI_Controller {
 	public function __construct(){
         parent::__construct();
         $this->load->model('Materias_model');
+        $this->load->model('Grupos_model');
+
     }
 
     public function insertarMateria(){
@@ -39,4 +41,12 @@ class Materias extends CI_Controller {
         redirect($this->config->site_url()."/Paginas/vista/exito");
 
     }
+
+    public function eliminarMateria(){
+        $clave = $this->input->post('claveC');        
+        $this->Materias_model->eliminarMateria($clave);
+        redirect($this->config->site_url()."/Paginas/vista/exito");
+
+    }
+
 }

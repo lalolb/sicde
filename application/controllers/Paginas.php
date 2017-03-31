@@ -54,10 +54,36 @@ class Paginas extends CI_Controller {
 		$this->vista('materiaCrear', $data);
 	}
 
-	public function materiaModificar(){
+	public function materiaModificar($accion){
+		$data['accion'] =$accion;
 		$data['materias'] = $this->Materias_model->getMaterias();
-		$this->vista('materiaBuscarModificar',$data);
+		$this->vista('materiaBuscar',$data);
 	}
+	
+
+    public function buscarMateria(){
+
+        $clave =$this->input->get('materia');
+        $data['materia'] =$this->Materias_model->buscarMateria($clave);
+        $data['carreras'] = $this->Carreras_model->getCarreras();
+        $this->vista('materiaModificar',$data);
+    }
+
+
+	public function  materiasConsultar(){
+		$data['materias'] = $this->Materias_model->getMaterias();
+		$data['carreras'] = $this->Carreras_model->getCarreras();
+		$this->vista('materiaConsultar', $data);
+    }
+
+ 	public function eliminarMateria(){
+ 		$clave =$this->input->get('materia');
+        $data['materia'] =$this->Materias_model->buscarMateria($clave);
+        $data['carreras'] = $this->Carreras_model->getCarreras();
+        $this->vista('materiaEliminarConfirmar',$data);
+
+ 	}
+
 
 	public function grupoCrear(){
 		$data['materias']= $this->Materias_model->getMaterias();
@@ -66,14 +92,32 @@ class Paginas extends CI_Controller {
 
 	}
 
-	public function grupoModificar(){
-		$this->vista('grupoModificar');
+	public function grupoModificar($accion){
+		$data['accion'] = $accion;
+		$data['grupos'] = $this->Grupos_model->getGrupos();		
+		$this->vista('grupoBuscar', $data);
 	}
 
-	public function buscarMateria(){
-        $clave =$this->input->get('materia');
-        $data['materia'] =$this->Materias_model->buscarMateria($clave);
-        $data['carreras'] = $this->Carreras_model->getCarreras();
-        $this->vista('materiaModificar',$data);
-    }
+	public function grupoBuscar(){
+		$clave =$this->input->get('grupo');
+        $data['grupo'] =$this->Grupos_model->buscarGrupo($clave);
+        $data['profesores']= $this->Profesores_model->getProfesores();
+        $data['materias'] = $this->Materias_model->getMaterias();
+        $this->vista('grupoModificar',$data);
+
+	}
+
+	public function grupoConsultar(){
+		$data['grupos'] = $this->Grupos_model->getGrupos();
+        $this->vista('grupoConsultar',$data);
+
+	}
+
+	public function grupoEliminar(){
+		$clave =$this->input->get('grupo');
+        $data['grupo'] =$this->Grupos_model->buscarGrupo($clave);
+        $data['profesores']= $this->Profesores_model->getProfesores();
+        $data['materias'] = $this->Materias_model->getMaterias();
+        $this->vista('grupoEliminarConfirmar',$data);
+	}	
 }

@@ -60,9 +60,9 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo site_url(); ?>/Paginas/materiaCrear"><i class="fa fa-circle-o"></i>Alta</a></li>
-            <li><a href="<?php echo site_url(); ?>/Paginas/materiaModificar"><i class="fa fa-circle-o"></i>Modificar</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i>Consultar</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i>Eliminar</a></li>
+            <li><a href="<?php echo site_url(); ?>/Paginas/materiaModificar/buscar"><i class="fa fa-circle-o"></i>Modificar</a></li>
+            <li><a href="<?php echo site_url(); ?>/Paginas/materiasConsultar"><i class="fa fa-circle-o"></i>Consultar</a></li>
+            <li><a href="<?php echo site_url(); ?>/Paginas/materiaModificar/Eliminar"><i class="fa fa-circle-o"></i>Eliminar</a></li>
           </ul>
         </li>
         <!-- OPCIONES PARA GRUPOS -->
@@ -76,9 +76,9 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo site_url(); ?>/Paginas/grupoCrear"><i class="fa fa-circle-o"></i>Alta</a></li>
-            <li><a href="<?php echo site_url(); ?>/Paginas/grupoModificar"><i class="fa fa-circle-o"></i>Modificar</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i>Consultar</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i>Eliminar</a></li>
+            <li><a href="<?php echo site_url(); ?>/Paginas/grupoModificar/Buscar"><i class="fa fa-circle-o"></i>Modificar</a></li>
+            <li><a href="<?php echo site_url(); ?>/Paginas/grupoConsultar"><i class="fa fa-circle-o"></i>Consultar</a></li>
+            <li><a href="<?php echo site_url(); ?>/Paginas/grupoModificar/Eliminar"><i class="fa fa-circle-o"></i>Eliminar</a></li>
           </ul>
         </li>
       </ul>
