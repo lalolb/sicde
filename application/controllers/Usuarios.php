@@ -30,11 +30,27 @@ class Usuarios extends CI_Controller {
         break;
 
     	case 'alumno':
-        	echo "alumno";
+        	$usuario = $this->Alumnos_model->getAlumnoLogin($clave,$pass);
+            if (empty($usuario)) {
+                redirect($this->config->site_url());
+            }else{
+                $this->session->set_userdata("tipo",$tipo);
+                $nombre = $this->Alumnos_model->getDatosPersonales($usuario['cve_datos']);
+                $this->session->set_userdata("nombre",$nombre['nombre']);
+                redirect($this->config->site_url());
+            }
         break;
 
     	case 'profe':
-        	echo "profe";
+        	$usuario = $this->Profesores_model->getProfesorLogin($clave,$pass);
+            if (empty($usuario)) {
+                redirect($this->config->site_url());
+            }else{
+                $this->session->set_userdata("tipo",$tipo);
+                $nombre = $this->Profesores_model->getDatosPersonales($usuario['cve_datos']);
+                $this->session->set_userdata("nombre",$nombre['nombre']);
+                redirect($this->config->site_url());
+            }
         break;
 		}
 	}

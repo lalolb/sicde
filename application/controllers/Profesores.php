@@ -41,4 +41,42 @@ class Profesores extends CI_Controller {
 		redirect($this->config->site_url()."/Paginas/vista/exito");
 
     }
+
+    public function modificarProfesor(){
+
+        //Obtenemos las claves ocultas
+        $clave_datos = $this->input->post('cve_datos');
+
+        //Obtenemos los datos generales
+        $generales['nombre']=$this->input->post('nombreA');
+        $generales['paterno']=$this->input->post('apaterno');
+        $generales['materno']=$this->input->post('amaterno');
+        $generales['fecha_nacimiento']=$this->input->post('fecha_nacimiento');
+        $generales['genero']=$this->input->post('genero');
+        $generales['RFC']=$this->input->post('rfc');
+        $generales['pais']=$this->input->post('nacionalidad');
+        $generales['curp']=$this->input->post('curp');
+        $generales['correo_personal']=$this->input->post('correo');
+        $generales['pais_nacimiento']=$this->input->post('pais_nacimiento');
+        $generales['estado']=$this->input->post('estado');
+        $generales['municipio']=$this->input->post('municipio_nacimiento');
+        $generales['tipo_sangre']=$this->input->post('sangre');
+        $generales['contacto_emergencia']=$this->input->post('tutor');
+        $generales['clave_imss']=$this->input->post('imss');
+        $generales['grupo_indigena']=$this->input->post('grupo_i');
+        $generales['dialecto_indigena']=$this->input->post('dialecto_i');
+
+        $result = $this->Profesores_model->modificarDatosProfesor( $clave_datos, $generales);
+        redirect($this->config->site_url()."/Paginas/vista/exito");
+
+    }
+
+    public function eliminaProfesor(){
+        $clave_profesor = $this->input->post('cve_profesor');
+        $clave_datos = $this->input->post('cve_datos');
+        $domicilio = $this->input->post('datos_domicilio');
+
+        $this->Profesores_model->deleteProfesor($clave_profesor,$clave_datos,$domicilio);
+        redirect($this->config->site_url()."/Paginas/vista/exito");
+    }
 }

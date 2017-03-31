@@ -43,10 +43,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url(); ?>/Paginas/vista/profesorCrear"><i class="fa fa-circle-o"></i>Alta</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i>Modificar</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i>Consultar</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i>Eliminar</a></li>
+            <li><a href="<?php echo site_url(); ?>/Paginas/profesorCrear"><i class="fa fa-circle-o"></i>Alta</a></li>
+            <li><a href="<?php echo site_url(); ?>/Paginas/profesorBuscar/Modificar"><i class="fa fa-circle-o"></i>Modificar</a></li>
+            <li><a href="<?php echo site_url(); ?>/Paginas/profesorConsultar"><i class="fa fa-circle-o"></i>Consultar</a></li>
+            <li><a href="<?php echo site_url(); ?>/Paginas/profesorBuscar/Eliminar"><i class="fa fa-circle-o"></i>Eliminar</a></li>
           </ul>
         </li>
         <!-- OPCIONES PARA MATERIAS -->
