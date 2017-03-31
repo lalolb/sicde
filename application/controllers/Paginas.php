@@ -49,6 +49,18 @@ class Paginas extends CI_Controller {
 		$this->vista('alumnoModificar',$data);
 	}
 
+	public function alumnoEliminar(){
+		$data['clave_alumno'] = $this->input->get('alumno');
+		$data['alumno'] = $this->Alumnos_model->getAlumno($data['clave_alumno']);
+		$data['carrera'] = $this->Carreras_model->getCarrera($data['alumno']['cve_carrera']);
+		$this->vista('alumnoEliminar',$data);
+	}
+
+	public function alumnoConsultar(){
+		$data['alumnos'] = $this->Alumnos_model->getAlumnos();
+		$this->vista('alumnoConsultar',$data);
+	}
+
 	public function materiaCrear(){
 		$data['carreras'] = $this->Carreras_model->getCarreras();
 		$this->vista('materiaCrear', $data);

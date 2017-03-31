@@ -18,7 +18,7 @@
           <h3 class="box-title">Alta de un alumno</h3>
         </div>
         <!-- form start -->
-        <form class="form-horizontal" action="<?php echo site_url()?>/Alumnos/insertarAlumno" method="put">
+        <form class="form-horizontal" action="<?php echo site_url()?>/Alumnos/modificarAlumno" method="post">
           <div class="box-body">
           <h3>Datos generales</h3>
             <div class="form-group">
@@ -28,7 +28,8 @@
                 </div>
             </div>
             <!-- /.form group -->
-
+            <input type="hidden" name="cve_datos" value="<?php echo $alumno['clave'] ?>">
+            <input type="hidden" name="cve_alumno" value="<?php echo $clave_alumno ?>">
             <div class="form-group">
               <label for="apaterno" class="col-sm-2 control-label">Apellido Paterno</label>
                 <div class="col-sm-10">
@@ -48,7 +49,7 @@
             <div class="form-group">
               <label for="nacimiento" class="col-sm-2 control-label">Fecha de nacimiento</label>
                 <div class="col-sm-10">
-                    <input name="fecha_nacimiento" type="text" class="form-control" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask  value="<?php echo $alumno['fecha_nacimiento'] ?>" required>
+                    <input name="fecha_nacimiento" type="text" class="form-control" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask value="<?php echo $alumno['fecha_nacimiento'] ?>" required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -58,7 +59,7 @@
               <div class="col-sm-2">
                 <div class="radio">
                   <label>
-                    <input type="radio" name="genero" id="generoM" value="M" checked>
+                    <input type="radio" name="genero" id="generoM" value="M" <?php if($alumno['genero']=='M'){echo "checked";}?>>
                       Masculino
                   </label>
                 </div>
@@ -66,7 +67,7 @@
               <div class="col-sm-3">
                 <div class="radio">
                   <label>
-                    <input type="radio" name="genero" id="generoF" value="F">
+                    <input type="radio" name="genero" id="generoF" value="F" <?php if($alumno['genero']=='F'){echo "checked";}?>>
                       Femenino
                   </label>
                 </div>
@@ -77,7 +78,7 @@
             <div class="form-group" id="divRFC">
               <label for="rfc" class="col-sm-2 control-label">RFC</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="rfc" name="rfc" placeholder="RFC" onkeyup="validaRFC()" required>
+                    <input type="text" class="form-control" id="rfc" name="rfc" placeholder="RFC" onkeyup="validaRFC()" value="<?php echo $alumno['RFC'] ?>" required>
                 </div>
                 <span id="help-block-RFC" class="help-block col-sm-4"></span>
             </div>
@@ -86,7 +87,7 @@
             <div class="form-group" id="divCURP">
               <label for="curp" class="col-sm-2 control-label">CURP</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="curp" name="curp" placeholder="CURP" onkeyup="validaCURP()" required>
+                    <input type="text" class="form-control" id="curp" name="curp" placeholder="CURP" onkeyup="validaCURP()" value="<?php echo $alumno['curp'] ?>" required>
                 </div>
                 <span id="help-block-CURP" class="help-block col-sm-4"></span>
             </div>
@@ -95,7 +96,7 @@
             <div class="form-group">
               <label for="correo" class="col-sm-2 control-label">E-mail</label>
                 <div class="col-sm-10">
-                    <input id="correo" name="correo" type="email" class="form-control" placeholder="E-mail" required>
+                    <input id="correo" name="correo" type="email" class="form-control" placeholder="E-mail" value="<?php echo $alumno['correo_personal'] ?>" required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -103,7 +104,7 @@
             <div class="form-group">
               <label for="nacionalidad" class="col-sm-2 control-label">País de nacionalidad</label>
                 <div class="col-sm-10">
-                    <input id="nacionalidad" name="nacionalidad" type="text" class="form-control" placeholder="País de nacionalidad" required>
+                    <input id="nacionalidad" name="nacionalidad" type="text" class="form-control" placeholder="País de nacionalidad" value="<?php echo $alumno['pais'] ?>" required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -111,11 +112,11 @@
             <div class="form-group">
               <label for="pais_nacimiento" class="col-sm-2 control-label">País de nacimiento</label>
                 <div class="col-sm-10">
-                    <input id="pais_nacimiento" name="pais_nacimiento" type="text" class="form-control" placeholder="País de nacimiento" required>
+                    <input id="pais_nacimiento" name="pais_nacimiento" type="text" class="form-control" placeholder="País de nacimiento" value="<?php echo $alumno['pais_nacimiento'] ?>" required>
                 </div>
             </div>
             <!-- /.form group -->
-
+            <input type="hidden" id="estado_alumno" value="<?php echo $alumno['estado'] ?>">
             <div class="form-group">
               <label for="estado" class="col-sm-2 control-label">Estado de nacimiento</label>
                 <div class="col-sm-10">
@@ -134,7 +135,7 @@
                       <option value="Guerrero">Guerrero</option>
                       <option value="Hidalgo">Hidalgo</option>
                       <option value="Jalisco">Jalisco</option>
-                      <option value="México" selected>México</option>
+                      <option value="México">México</option>
                       <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
                       <option value="Morelos">Morelos</option>
                       <option value="Nayarit">Nayarit</option>
@@ -160,7 +161,7 @@
             <div class="form-group">
               <label for="municipio_nacimiento" class="col-sm-2 control-label">Municipio de nacimiento</label>
                 <div class="col-sm-10">
-                    <input id="municipio_nacimiento" name="municipio_nacimiento" type="text" class="form-control" placeholder="Municipio de nacimiento" required>
+                    <input id="municipio_nacimiento" name="municipio_nacimiento" type="text" class="form-control" placeholder="Municipio de nacimiento" value="<?php echo $alumno['municipio'] ?>" required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -168,11 +169,11 @@
             <div class="form-group">
               <label for="sangre" class="col-sm-2 control-label">Tipo de Sangre</label>
                 <div class="col-sm-3">
-                    <input id="sangre" name="sangre" type="text" class="form-control" placeholder="Tipo de Sangre" required>
+                    <input id="sangre" name="sangre" type="text" class="form-control" placeholder="Tipo de Sangre" value="<?php echo $alumno['tipo_sangre'] ?>" required>
                 </div>
               <label for="imss" class="col-sm-2 control-label">Clave del IMSS</label>
                 <div class="col-sm-5">
-                    <input id="imss" name="imss" type="text" class="form-control" placeholder="Clave del IMSS" required>
+                    <input id="imss" name="imss" type="text" class="form-control" placeholder="Clave del IMSS" value="<?php echo $alumno['clave_imss'] ?>" required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -180,7 +181,7 @@
             <div class="form-group">
               <label for="tutor" class="col-sm-2 control-label">Padre/Madre o Tutor</label>
                 <div class="col-sm-10">
-                    <input id="tutor" name="tutor" type="text" class="form-control" placeholder="Padre/Madre o Tutor" required>
+                    <input id="tutor" name="tutor" type="text" class="form-control" placeholder="Padre/Madre o Tutor" value="<?php echo $alumno['contacto_emergencia'] ?>" required>
                 </div>
             </div>
             <!-- /.form group -->
@@ -189,15 +190,29 @@
               <label for="grupo_i" class="col-sm-2 control-label">Grupo indígena</label>
                 <div class="col-sm-4">
                     <select id="grupo_i" name="grupo_i" class="form-control">
-                      <option value="No">No</option>
-                      <option value="Si">Si</option>
+                    <?php
+                    if ($alumno['grupo_indigena']=="No") {
+                      echo "<option value=\"No\" selected>No</option>";
+                      echo "<option value=\"Si\">Si</option>";
+                    }else{
+                      echo "<option value=\"No\">No</option>";
+                      echo "<option value=\"Si\" selected>Si</option>";
+                    }
+                    ?>
                     </select>
                 </div>
               <label for="dialecto_i" class="col-sm-2 control-label">Dialecto indígena</label>
                 <div class="col-sm-4">
                     <select id="dialecto_i" name="dialecto_i" class="form-control">
-                      <option value="No">No</option>
-                      <option value="Si">Si</option>
+                      <?php
+                      if ($alumno['dialecto_indigena']=="No") {
+                        echo "<option value=\"No\" selected>No</option>";
+                        echo "<option value=\"Si\">Si</option>";
+                      }else{
+                        echo "<option value=\"No\">No</option>";
+                        echo "<option value=\"Si\" selected>Si</option>";
+                      }
+                    ?>
                     </select>
                 </div>
             </div>
@@ -209,7 +224,11 @@
                     <select id="carrera" name="carrera" class="form-control">
                       <?php
                         foreach ($carreras as $key => $carrera) {
-                          echo "<option value='".$carrera['clave']."'>".$carrera['nombre']."</option>";
+                          if ($carrera['clave']==$alumno['cve_carrera']) {
+                            echo "<option value=\"".$carrera['clave']."\" selected>".$carrera['nombre']."</option>";
+                          }else{
+                            echo "<option value=\"".$carrera['clave']."\">".$carrera['nombre']."</option>";
+                          }
                         }
                       ?>
                     </select>
@@ -237,6 +256,11 @@
 <script src="<?php echo base_url()?>assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
 <script type="text/javascript">
+
+$("#estado option").each(function(){
+    if ($(this).val()==$("#estado_alumno").val()) {$("#estado").val($("#estado_alumno").val());}
+});
+
   $(function () {
     //Datemask dd/mm/yyyy
     $("#datemask").inputmask("yyyy/mm/dd", {"placeholder": "yyyy/mm/dd"});

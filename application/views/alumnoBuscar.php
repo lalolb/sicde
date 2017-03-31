@@ -50,7 +50,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- Select2 -->
+<!-- Select2 -->
 <script src="<?php echo base_url()?>assets/plugins/select2/select2.full.min.js"></script>
 
 <script>
