@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Alumnos
+        Profesores
       </h1>
     </section>
 
@@ -17,18 +17,18 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $accion ?> un alumno</h3>
+          <h3 class="box-title"><?php echo $accion ?> un profesor</h3>
         </div>
         <!-- form start -->
-        <form class="form-horizontal" method="get" action="<?php echo site_url('/Paginas/alumno'.$accion)?>" method="post">
+        <form class="form-horizontal" method="get" action="<?php echo site_url('/Paginas/profesor'.$accion)?>" method="post">
           <div class="box-body">
             <div class="form-group">
-              <label for="alumno" class="col-sm-2 control-label">Clave o Nombre del alumno</label>
+              <label for="profesor" class="col-sm-2 control-label">RFC o Nombre del profesor</label>
                 <div class="col-sm-10">
-                  <select name="alumno" id="alumno" class="form-control select2" style="width: 100%;">
+                  <select name="profesor" id="profesor" class="form-control select2" style="width: 100%;" required>
                   <?php
-                    foreach ($alumnos as $key => $alumno) {
-                      echo "<option value=\"".$alumno['clave']."\">".$alumno['clave']." - ".$alumno['nombre']." ".$alumno['paterno']." ".$alumno['materno']."</option>";
+                    foreach ($profesores as $key => $profesor) {
+                      echo "<option value=\"".$profesor['clave']."\">".$profesor['clave']." - ".$profesor['nombre']." ".$profesor['paterno']." ".$profesor['materno']."</option>";
                     }
                   ?>
                   </select>
