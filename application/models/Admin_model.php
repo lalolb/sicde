@@ -8,7 +8,7 @@ class Admin_model extends CI_Model {
 
 	public function getAdmin($clave,$pass){
 		$this->db->where('clave',$clave);
-		$this->db->where('password',$pass);
+		$this->db->where('password',hash('md5',$pass));
 		$result = $this->db->get('administrador');
 		return $result->row_array();
 	}

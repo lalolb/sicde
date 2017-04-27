@@ -14,7 +14,7 @@ class Profesores_model extends CI_Model{
 		$profesor['datos_domicilio'] = $this->db->insert_id();
 
 		$profesor['clave'] = $datos_personales['RFC'];
-		$profesor['password'] = $datos_personales['RFC'];
+		$profesor['password'] = hash('md5',$datos_personales['RFC']);
 
 		return $this->db->insert('profesor', $profesor);
 	}
@@ -54,7 +54,7 @@ class Profesores_model extends CI_Model{
 
 	public function getProfesorLogin($clave,$pass){
 		$this->db->where('clave',$clave);
-		$this->db->where('password',$pass);
+		$this->db->where('password',hash('md5',$pass));
 		$result = $this->db->get('profesor');
 		return $result->row_array();
 	}

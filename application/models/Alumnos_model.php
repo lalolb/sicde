@@ -16,6 +16,7 @@ class Alumnos_model extends CI_Model {
 		$pass['password'] = $this->db->insert_id();
 
 		$this->db->where('clave', $pass['password']);
+		$pass['password'] = hash('md5',$pass['password']);
 		return $this->db->update('alumno', $pass);
 	}
 
@@ -51,7 +52,7 @@ class Alumnos_model extends CI_Model {
 
 	public function getAlumnoLogin($clave,$pass){
 		$this->db->where('clave',$clave);
-		$this->db->where('password',$pass);
+		$this->db->where('password',hash('md5',$pass));
 		$result = $this->db->get('alumno');
 		return $result->row_array();
 	}
