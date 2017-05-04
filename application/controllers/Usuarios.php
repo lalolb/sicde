@@ -22,6 +22,7 @@ class Usuarios extends CI_Controller {
     			redirect($this->config->site_url());
     		}else{
     			$this->session->set_userdata("tipo",$tipo);
+                $this->session->set_userdata("clave",$usuario['clave']);
     			$nombre = $this->Admin_model->getDatosPersonales($usuario['cve_datos']);
 				$this->session->set_userdata("nombre",$nombre['nombre']);
       			redirect($this->config->site_url());
@@ -35,18 +36,20 @@ class Usuarios extends CI_Controller {
                 redirect($this->config->site_url());
             }else{
                 $this->session->set_userdata("tipo",$tipo);
+                $this->session->set_userdata("clave",$usuario['clave']);
                 $nombre = $this->Alumnos_model->getDatosPersonales($usuario['cve_datos']);
                 $this->session->set_userdata("nombre",$nombre['nombre']);
                 redirect($this->config->site_url());
             }
         break;
 
-    	case 'profe':
+    	case 'profesor':
         	$usuario = $this->Profesores_model->getProfesorLogin($clave,$pass);
             if (empty($usuario)) {
                 redirect($this->config->site_url());
             }else{
                 $this->session->set_userdata("tipo",$tipo);
+                $this->session->set_userdata("clave",$usuario['clave']);
                 $nombre = $this->Profesores_model->getDatosPersonales($usuario['cve_datos']);
                 $this->session->set_userdata("nombre",$nombre['nombre']);
                 redirect($this->config->site_url());
@@ -56,7 +59,7 @@ class Usuarios extends CI_Controller {
 	}
 
 	public function salir(){
-		$array_items = array('tipo','nombre');
+		$array_items = array('tipo','nombre','clave');
 		$this->session->unset_userdata($array_items);
 		redirect($this->config->site_url());
 	}

@@ -40,7 +40,7 @@
       <div class="form-group">
                   <select name="tipo" class="form-control" required>
                     <option value="alumno" selected>Alumno</option>
-                    <option value="profe">Profesor</option>
+                    <option value="profesor">Profesor</option>
                     <option value="admin">Administrador</option>
                   </select>
       </div>

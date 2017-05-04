@@ -158,5 +158,21 @@ class Paginas extends CI_Controller {
         $data['profesores']= $this->Profesores_model->getProfesores();
         $data['materias'] = $this->Materias_model->getMaterias();
         $this->vista('grupoEliminarConfirmar',$data);
-	}	
+	}
+
+	public function verPerfil(){
+		$data['clave'] = $this->session->userdata['clave'];
+		$data['tipo'] = $this->session->userdata['tipo'];
+		if ($data['tipo'] == "alumno") {
+			$data['humano'] = $this->Alumnos_model->getAlumno($data['clave']);
+		}else{
+			$data['humano'] = $this->Profesores_model->getProfesor($data['clave']);
+		}
+		$this->vista('verPerfil',$data);
+	}
+
+	public function inscripciones(){
+		$data['alumnos'] = $this->Alumnos_model->getAlumnos();
+		$this->vista('inscripciones',$data);
+	}
 }

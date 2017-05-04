@@ -39,8 +39,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i>Trayectoria académica</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Análisis por ciclo</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>Consultar Grupos</a></li>
           </ul>
         </li>
     </section>

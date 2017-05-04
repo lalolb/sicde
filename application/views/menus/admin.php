@@ -81,6 +81,14 @@
             <li><a href="<?php echo site_url(); ?>/Paginas/grupoModificar/Eliminar"><i class="fa fa-circle-o"></i>Eliminar</a></li>
           </ul>
         </li>
+
+        <!-- OPCIONES PARA INSCRIPCIONES -->
+        <li class="treeview">
+          <a href="<?php echo site_url(); ?>/Paginas/inscripciones">
+            <i class="fa fa-edit"></i>
+            <span>Inscripciones</span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
