@@ -63,4 +63,32 @@ class Alumnos_model extends CI_Model {
 		return $result->row_array();
 	}
 
+	public function alumnoInscrito($cve_alumno, $cve_semestre){
+		$result = $this->db->query('SELECT * FROM alumno_x_semestre WHERE cve_alumno='.$cve_alumno.' AND cve_semestre='.$cve_semestre);
+		if (empty($result->result_array())) {
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	public function inscribeAlumno($data){
+		if (!$this->alumnoInscrito($data['cve_alumno'], $data['cve_semestre'])) {
+			$axs = array(
+		        'cve_alumno' => $data['cve_alumno'],
+		        'cve_semestre' => $data['cve_semestre']
+			);
+			$this->db->insert('alumno_x_semestre',$axs);
+		}
+		$calificacion = array('ordinario' => '0.0',
+			'extra' => '0.0',
+			'titulo' => '0.0',
+			'aprobado' => 1 );
+
+		$this->db->insert('calificacion',$calificacion);
+		$data['cve_calificacion'] = $this->db->insert_id();
+
+		return $this->db->insert('alumnos_x_grupo',$data);
+	}
+
 }

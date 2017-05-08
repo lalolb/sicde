@@ -116,6 +116,24 @@
                       echo "</td>";
                       echo "<td>".$alumno['cve_carrera'];
                       echo "</tr>";
+
+                      echo "<tr>";
+                      echo "<td>Periodo inicial";          
+                      echo "</td>";
+                      echo "<td>".$alumno['cve_carrera'];
+                      echo "</tr>";
+
+                      echo "<tr>";
+                      echo "<td>Periodo actual";          
+                      echo "</td>";
+                      echo "<td>".$alumno['cve_carrera'];
+                      echo "</tr>";
+
+                      echo "<tr>";
+                      echo "<td>Situación";          
+                      echo "</td>";
+                      echo "<td>".$alumno['cve_carrera'];
+                      echo "</tr>";
                      }                  
                    }
 

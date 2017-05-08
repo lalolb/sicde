@@ -10,6 +10,7 @@ class Paginas extends CI_Controller {
         $this->load->model('Materias_model');
         $this->load->model('Grupos_model');
         $this->load->model('Profesores_model');
+        $this->load->model('Semestres_model');
     }
 
 	public function vista($pagina = 'index', $data = null){
@@ -172,7 +173,9 @@ class Paginas extends CI_Controller {
 	}
 
 	public function inscripciones(){
+		$data['semestres'] = $this->Semestres_model->getSemestres();
 		$data['alumnos'] = $this->Alumnos_model->getAlumnos();
+		$data['grupos'] = $this->Grupos_model->getGrupos();
 		$this->vista('inscripciones',$data);
 	}
 
@@ -184,4 +187,5 @@ class Paginas extends CI_Controller {
 		$this->vista('alumnoTrayectoria',$data);
 
 	}
+
 }
