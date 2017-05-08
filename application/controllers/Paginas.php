@@ -175,4 +175,13 @@ class Paginas extends CI_Controller {
 		$data['alumnos'] = $this->Alumnos_model->getAlumnos();
 		$this->vista('inscripciones',$data);
 	}
+
+	public function trayectoria(){
+		
+		$data['alumnos'] = $this->Alumnos_model->getAlumnos();
+	
+		$data['clave'] = $this->session->userdata['clave'];
+		$this->vista('alumnoTrayectoria',$data);
+
+	}
 }
