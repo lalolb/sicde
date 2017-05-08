@@ -20,15 +20,44 @@
           <h3 class="box-title">Inscripciones</h3>
         </div>
         <!-- form start -->
-        <form class="form-horizontal" method="get" action="<?php echo site_url('/Paginas/alumnoInscripcion')?>" method="post">
+        <form class="form-horizontal" method="post" action="<?php echo site_url('/Alumnos/inscribirAlumno')?>">
           <div class="box-body">
             <div class="form-group">
-              <label for="alumno" class="col-sm-2 control-label">Clave o Nombre del alumno</label>
-                <div class="col-sm-10">
+              <label for="alumno" class="col-sm-3 control-label">Clave o Nombre del alumno</label>
+                <div class="col-sm-9">
                   <select name="alumno" id="alumno" class="form-control select2" style="width: 100%;">
                   <?php
                     foreach ($alumnos as $key => $alumno) {
                       echo "<option value=\"".$alumno['clave']."\">".$alumno['clave']." - ".$alumno['nombre']." ".$alumno['paterno']." ".$alumno['materno']."</option>";
+                    }
+                  ?>
+                  </select>
+                </div>
+            </div>
+            <!-- /.form group -->
+
+            <div class="form-group">
+              <label for="materia" class="col-sm-3 control-label">Grupo</label>
+                <div class="col-sm-9">
+                    <select id="grupo" name="grupo" class="form-control select2">
+                      <?php
+                        foreach ($grupos as $key => $grupo) {
+                          
+                               echo "<option value='".$grupo['clave']."'>".$grupo['clave']." - ".$grupo['materia']." (".$grupo['nombre']." ".$grupo['paterno']." ".$grupo['materno'].")</option>";
+                           
+                            }
+                      ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label for="semestre" class="col-sm-3 control-label">Semestre</label>
+                <div class="col-sm-9">
+                  <select name="semestre" id="semestre" class="form-control select2" style="width: 100%;">
+                  <?php
+                    foreach ($semestres as $key => $semestre) {
+                      echo "<option value=\"".$semestre['clave']."\">".$semestre['anio'].$semestre['letra']."</option>";
                     }
                   ?>
                   </select>

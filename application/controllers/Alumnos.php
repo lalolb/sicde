@@ -82,4 +82,12 @@ class Alumnos extends CI_Controller {
     	$result = $this->Alumnos_model->deleteAlumno($clave_alumno, $clave_datos, $clave_domicilio);
     	redirect($this->config->site_url()."/Paginas/vista/exito");
     }
+
+    public function inscribirAlumno(){
+        $data['cve_alumno'] = $this->input->post('alumno');
+        $data['cve_grupo'] = $this->input->post('grupo');
+        $data['cve_semestre'] = $this->input->post('semestre');
+        $result = $this->Alumnos_model->inscribeAlumno($data);
+        redirect($this->config->site_url()."/Paginas/vista/exito");
+    }
 }

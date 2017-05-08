@@ -74,7 +74,7 @@ CREATE TABLE `alumno` (
 
 LOCK TABLES `alumno` WRITE;
 /*!40000 ALTER TABLE `alumno` DISABLE KEYS */;
-INSERT INTO `alumno` VALUES (1,3,1,'c4ca4238a0b923820dcc509a6f75849b',1),(2,1,2,'c81e728d9d4c2f636f067f89cc14862c',2),(3,1,3,'eccbc87e4b5ce2fe28308fd9f2a7baf3',3),(4,1,11,'a87ff679a2f3e71d9181a67b7542122c',11),(5,5,12,'e4da3b7fbbce2345d777',12);
+INSERT INTO `alumno` VALUES (1,1,1,'c4ca4238a0b923820dcc509a6f75849b',1),(2,1,2,'c81e728d9d4c2f636f067f89cc14862c',2),(3,1,3,'eccbc87e4b5ce2fe28308fd9f2a7baf3',3),(4,1,11,'a87ff679a2f3e71d9181a67b7542122c',11),(5,5,12,'e4da3b7fbbce2345d777',12);
 /*!40000 ALTER TABLE `alumno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +151,7 @@ CREATE TABLE `calificacion` (
   `titulo` varchar(5) DEFAULT NULL,
   `aprobado` int(11) DEFAULT NULL,
   PRIMARY KEY (`clave`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,7 +224,7 @@ CREATE TABLE `datos_personales` (
 
 LOCK TABLES `datos_personales` WRITE;
 /*!40000 ALTER TABLE `datos_personales` DISABLE KEYS */;
-INSERT INTO `datos_personales` VALUES (1,'Estefanía Esthela','Romero','López','1992-02-16','F','RELE920216','México','RELE920216MMCLMS13','coso@dominio.com',NULL,'México','México','Neza','A+','Antonia López','130549510-74','No','No'),(2,'Lalo','Beltran','Dominguez','1993-07-08','M','BEDL930708','México','BEDL930708HMCLMS13','coso@dominio.com',NULL,'México','México','Toluca','O+','Susana Ma. del Pilar Dominguez Villalva','130540-08','No','No'),(3,'Vyasa','Ituarte','Correa','1994-01-23','M','RIVC940226','México','RIVC940226HMCLMS13','coso@dominio.com',NULL,'México','México','Valle de Bravo','O+','Emilio Ituarte','130510-74','Si','Si'),(5,'Silvia Edith','Albarrán','Trujillo','1965-05-16','M','SEAT650516','México','SEAT650516MMCLMS13','root@admin.com',NULL,'México','México','Toluca','O+','Silvia Edith','130510-52','No','No'),(7,'Everardo','Granados','Flores','2084-06-05','M','EGFL930708','México','EGFL930708HMCLMS04','profe@miau.com',NULL,'México','México','Toluca','O+','Su gfita','130510-74','No','No'),(9,'Juan Carlos','Matadamas','Gómez','1965-06-05','M','MATA650605','México','SEAT650516HMCLMS13','profe@admin.com',NULL,'México','México','Seminario','O-','Carol Leyva','130540-08','No','No'),(10,'Sara','Vera','Noguez','1962-04-05','M','SVNN620405','México','SVNN620405MMCLMS13','sara@bati.com',NULL,'México','Nuevo León','León','A+','Francisco Chávez','130510-52','No','No'),(11,'Itzel','Mercado','Salas','1991-05-09','F','CICF700725','México','CICF700725HMCLMS13','coso@dominio.com',NULL,'México','México','Toluca','O+','Itzel Salas','130510-52','No','No'),(12,'Edgar','Rodriguez','Rodriguez','1995-05-04','M','RERO950504','México','RERO950504HMCLMS01','edgar@dominio.com',NULL,'México','México','Toluca','A+','Edgar R.','130540-08','No','No'),(13,'Francisco Ignacio','Chavez','Castañeda','1970-07-21','M','CFIC700721','México','CFIC700721HMCLMS00','coso@dominio.com',NULL,'México','CDMX','Miguel Hidalgo','B-','Sara Vera','130540-11','No','No');
+INSERT INTO `datos_personales` VALUES (1,'Estefanía','Romero','López','1992-02-16','F','RELE920216','México','RELE920216MMCLMS13','coso@dominio.com',NULL,'México','México','Neza','A+','Antonia López','130549510-74','No','No'),(2,'Lalo','Beltran','Dominguez','1993-07-08','M','BEDL930708','México','BEDL930708HMCLMS13','coso@dominio.com',NULL,'México','México','Toluca','O+','Susana Ma. del Pilar Dominguez Villalva','130540-08','No','No'),(3,'Vyasa','Ituarte','Correa','1994-01-23','M','RIVC940226','México','RIVC940226HMCLMS13','coso@dominio.com',NULL,'México','México','Valle de Bravo','O+','Emilio Ituarte','130510-74','Si','Si'),(5,'Silvia Edith','Albarrán','Trujillo','1965-05-16','M','SEAT650516','México','SEAT650516MMCLMS13','root@admin.com',NULL,'México','México','Toluca','O+','Silvia Edith','130510-52','No','No'),(7,'Everardo','Granados','Flores','2084-06-05','M','EGFL930708','México','EGFL930708HMCLMS04','profe@miau.com',NULL,'México','México','Toluca','O+','Su gfita','130510-74','No','No'),(9,'Juan Carlos','Matadamas','Gómez','1965-06-05','M','MATA650605','México','SEAT650516HMCLMS13','profe@admin.com',NULL,'México','México','Seminario','O-','Carol Leyva','130540-08','No','No'),(10,'Sara','Vera','Noguez','1962-04-05','M','SVNN620405','México','SVNN620405MMCLMS13','sara@bati.com',NULL,'México','Nuevo León','León','A+','Francisco Chávez','130510-52','No','No'),(11,'Itzel','Mercado','Salas','1991-05-09','F','CICF700725','México','CICF700725HMCLMS13','coso@dominio.com',NULL,'México','México','Toluca','O+','Itzel Salas','130510-52','No','No'),(12,'Edgar','Rodriguez','Rodriguez','1995-05-04','M','RERO950504','México','RERO950504HMCLMS01','edgar@dominio.com',NULL,'México','México','Toluca','A+','Edgar R.','130540-08','No','No'),(13,'Francisco Ignacio','Chavez','Castañeda','1970-07-21','M','CFIC700721','México','CFIC700721HMCLMS00','coso@dominio.com',NULL,'México','CDMX','Miguel Hidalgo','B+','Sara Vera Noguez','130540-11','No','No');
 /*!40000 ALTER TABLE `datos_personales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -361,7 +361,7 @@ CREATE TABLE `semestre` (
   `anio` int(11) DEFAULT NULL,
   `letra` varbinary(1) DEFAULT NULL,
   PRIMARY KEY (`clave`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -370,6 +370,7 @@ CREATE TABLE `semestre` (
 
 LOCK TABLES `semestre` WRITE;
 /*!40000 ALTER TABLE `semestre` DISABLE KEYS */;
+INSERT INTO `semestre` VALUES (1,2011,'A'),(2,2011,'B'),(3,2012,'A'),(4,2012,'B'),(5,2013,'A'),(6,2013,'B'),(7,2014,'A'),(8,2014,'B'),(9,2015,'A'),(10,2015,'B'),(11,2016,'A'),(12,2016,'B'),(13,2017,'A');
 /*!40000 ALTER TABLE `semestre` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -382,4 +383,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-04 10:13:10
+-- Dump completed on 2017-05-08 15:22:46
