@@ -31,60 +31,12 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#tab_1" data-toggle="tab">Detalle</a></li>
               <li><a href="#tab_2" data-toggle="tab">Calificaciones</a></li>
-              <li><a href="#tab_3" data-toggle="tab">Indicadoress</a></li>
+              <li><a href="#tab_3" data-toggle="tab">Indicadores</a></li>
               
              
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="tab_1">
-                <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th>Campo</th>
-                  <th>Valor</th>
-              
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-
-                  echo "<tr>";
-                  echo "<td>Nombre";          
-                  echo "</td>";
-                  foreach ($alumnos as $key => $alumno) {
-                    if($alumno['clave']==$clave){
-                       echo "<td>".$alumno['nombre']." ".$alumno['paterno']." ".$alumno['materno'];
-                     }                  
-                   }
-                   echo "</tr>";
-
-                   echo "<tr>";
-                  echo "<td>Clave";          
-                  echo "</td>";
-                  foreach ($alumnos as $key => $alumno) {
-                    if($alumno['clave']==$clave){
-                       echo "<td>".$alumno['clave'];
-                     }                  
-                   }
-                   echo "</tr>";
-                  
-                   echo "<tr>";
-                  echo "<td>Carrera";          
-                  echo "</td>";
-                  foreach ($alumnos as $key => $alumno) {
-                    if($alumno['clave']==$clave){
-                       echo "<td>".$alumno['cve_carrera'];
-                     }                  
-                   }
-                   echo "</tr>";
-                ?>
-                
-                </tbody>
-              </table>
-                
-              </div>
-              <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_2">
                 <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -117,25 +69,85 @@
                       echo "<td>".$alumno['cve_carrera'];
                       echo "</tr>";
 
+                    
                       echo "<tr>";
                       echo "<td>Periodo inicial";          
                       echo "</td>";
-                      echo "<td>".$alumno['cve_carrera'];
+                      echo "<td>".$semestres[0]['anio'].$semestres[0]['letra'];
                       echo "</tr>";
 
                       echo "<tr>";
                       echo "<td>Periodo actual";          
                       echo "</td>";
-                      echo "<td>".$alumno['cve_carrera'];
+                      $tot = count($semestres)-1;
+                      echo "<td>".$semestres[$tot]['anio'].$semestres[$tot]['letra'];
                       echo "</tr>";
 
                       echo "<tr>";
                       echo "<td>Situación";          
                       echo "</td>";
-                      echo "<td>".$alumno['cve_carrera'];
+                      echo "<td>".$semestres[$tot]['situacion'];
                       echo "</tr>";
                      }                  
                    }
+
+                  
+                ?>
+                
+                </tbody>
+              </table>
+                
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2">
+                <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Periodo</th>
+                  <th>U/A Asignatura</th>
+                  <th>Ordinario</th>
+                  <th>Extra</th>
+                  <th>Título</th>
+                  <th>Indicador</th>
+              
+                </tr>
+                </thead>
+                <tbody>
+                  <?php
+
+                  $cont1=0; 
+                  $cont2=0; 
+                 foreach ($alumnos as $key => $alumno) {
+                    if($alumno['clave']==$clave){
+                      foreach ($calificaciones as $key => $calificacion) {
+                        echo "<tr>";
+                        echo "<td>".$calificacion['anio'].$calificacion['letra'];
+                        echo "</td>";                        
+                        echo "<td>".$calificacion['nombre'];
+                        echo "</td>"; 
+                        echo "<td>".$calificacion['ordinario'];
+                        echo "</td>";
+                        echo "<td>".$calificacion['extra'];
+                        echo "</td>"; 
+                        echo "<td>".$calificacion['titulo'];
+                        echo "</td>"; 
+                        if($calificacion['aprobado']==1){
+                          echo "<td> Aprobada";
+                          echo "</td>";
+                          $cont1 = $cont1+1; 
+                        }else{
+                          echo "<td> Reprobada";
+                          echo "</td>";
+                          $cont2 = $cont2+1;
+                        }            
+                     
+                      }
+
+                     
+                     }                  
+                   
+                  }
+
 
                   
                 ?>
@@ -145,21 +157,187 @@
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                like Aldus PageMaker including versions of Lorem Ipsum.
+
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Campo</th>
+                  <th>Valor</th>
+              
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                  // CALCULA EL PROMEDIO DEL ULTIMO SEMESTRE
+                  
+                  $i =0;
+                  $ultP = count($semestres)-2;
+                 // echo $ultP;
+                  foreach ($alumnos as $key => $alumno) {
+                    if($alumno['clave']==$clave){
+                      $sum = 0;
+                      foreach ($calificaciones as $key => $calificacion) {
+                        if($calificacion['cve_semestre']==$semestres[$ultP]['clave']){
+                         //echo $semestres[$ultP]['anio']." clave semestre:".$semestres[$ultP]['clave'];
+                            if($calificacion['titulo']=="--"||$calificacion['titulo']=="NP"||$calificacion['titulo']=="SD"){
+                              if($calificacion['extra']=="--"||$calificacion['extra']=="NP"||$calificacion['extra']=="SD"){
+                                $sum = $sum+ $calificacion['ordinario'];
+                              }else{
+                                $sum = $sum+ $calificacion['extra'];
+                              }
+                            }else{
+                              $sum = $sum+ $calificacion['titulo'];
+                            }
+                            
+                          $i++;
+                        }
+                      }
+                      $promedioU = $sum/$i;
+                      $promedioU=  number_format((float)$promedioU, 1, '.', '');
+                     
+                    }
+                  }
+
+                  // CALCULA EL PROMEDIO GENERAL
+                  $i =0;
+                
+                  foreach ($alumnos as $key => $alumno) {
+                    if($alumno['clave']==$clave){
+                      $sum = 0;
+                      foreach ($calificaciones as $key => $calificacion) {
+                        if($calificacion['cve_semestre']!=$semestres[$tot]['clave']){
+                         //echo $semestres[$ultP]['anio']." clave semestre:".$semestres[$ultP]['clave'];
+                            if($calificacion['titulo']=="--"||$calificacion['titulo']=="NP"||$calificacion['titulo']=="SD"){
+                              if($calificacion['extra']=="--"||$calificacion['extra']=="NP"||$calificacion['extra']=="SD"){
+                                $sum = $sum+ $calificacion['ordinario'];
+                              }else{
+                                $sum = $sum+ $calificacion['extra'];
+                              }
+                            }else{
+                              $sum = $sum+ $calificacion['titulo'];
+                            }
+
+                          
+                          $i++;
+                        }
+                      }
+                      $promedioG = $sum/$i;
+                     // echo "i = ".$i."  sum=".$sum;
+                      $promedioG=  round($promedioG, 2);
+                     
+                    }
+                  }
+
+                  //EXAMENES REPROBADOS
+                  $i =0;
+                
+                  foreach ($alumnos as $key => $alumno) {
+                    if($alumno['clave']==$clave){
+                      $sum = 0;
+                      foreach ($calificaciones as $key => $calificacion) {
+                        if($calificacion['cve_semestre']!=$semestres[$tot]['clave']){
+                         //echo $semestres[$ultP]['anio']." clave semestre:".$semestres[$ultP]['clave'];
+                            if($calificacion['titulo']!="--" && $calificacion['titulo']!="NP" && $calificacion['titulo']!="SD"){
+                              if($calificacion['titulo']<6){
+                                $i++;
+                              }
+                            }
+                            if($calificacion['extra']!="--" && $calificacion['extra']!="NP" && $calificacion['extra']!="SD"){
+                                if($calificacion['extra']<6){
+                                  $i++;
+                              }
+                             }
+                             if($calificacion['ordinario']!="--" && $calificacion['extra']!="NP" && $calificacion['extra']!="SD"){
+                                if($calificacion['extra']<6){
+                                  $i++;
+                              }
+                             }
+
+                        }
+                      }
+                      echo $i;
+                     
+                    }
+                  }
+
+                  $indicador = "nio se"; 
+                                    
+                  foreach ($alumnos as $key => $alumno) {
+                    if($alumno['clave']==$clave){
+                      echo "<tr>";
+                      echo "<td>Número de asignaturas acreditadas";          
+                      echo "</td>";
+                      echo "<td>".$cont1;
+                      echo "</tr>";
+
+                      echo "<tr>";
+                      echo "<td>Número de materias reprobadas";          
+                      echo "</td>";
+                      echo "<td>".$cont2;
+                      echo "</tr>";
+                  
+                      echo "<tr>";
+                      echo "<td>Promedio último período.";          
+                      echo "</td>";
+                      echo "<td>".$promedioU;
+                      echo "</tr>";
+
+                    
+                      echo "<tr>";
+                      echo "<td>Promedio general";          
+                      echo "</td>";
+                      echo "<td>".$promedioG;
+                      echo "</tr>";
+
+                      echo "<tr>";
+                      echo "<td>Situación de regular o irregular";          
+                      echo "</td>";
+                      echo "<td>".$indicador;
+                      echo "</tr>";
+
+                     
+                     }                  
+                   }
+
+                  
+                ?>
+                
+                </tbody>
+              </table>
+
+
+
+
+                <div class="row">
+                  <div class="col-xs-6 col-md-3 text-center">
+                  <?php
+                 
+                    $valor=390;
+                    $porcentaje = ($valor*100)/430;
+                    
+                    echo "<input type=\"text\" class=\"knob\" value=\"".$porcentaje."\" data-width=\"120\" data-height=\"120\" data-fgColor=\"#3c8dbc\" data-readonly=\"true\">";
+                    ?>
+                    <div class="knob-label">Créditos Acumulados</div>
+                  </div>          
+                
+              <!-- /.row -->
+
+                 
+                  <div class="col-xs-6 col-md-3 text-center">
+                  <?php
+                    $valor=390;
+                    $porcentaje = ($valor*100)/430;
+                    
+                    echo "<input type=\"text\" class=\"knob\" value=\"".$porcentaje."\" data-width=\"120\" data-height=\"120\" data-fgColor=\"#3c8dbc\" data-readonly=\"true\">";
+                    ?>
+                    <div class="knob-label">Exámenes Reprobados</div>
+                  </div>          
+                </div>
+
+
               </div>
               <!-- /.tab-pane -->
-            </div>
-            <!-- /.tab-content -->
-          </div>
-          <!-- nav-tabs-custom -->
-        </div>
-        <!-- /.col -->
+            
 
        
       <!-- END CUSTOM TABS -->
@@ -175,6 +353,8 @@
    <!-- DataTables -->
 <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/knob/jquery.knob.js"></script>
+
 
 <script>
   $(function () {
@@ -183,9 +363,19 @@
       "paging": true,
       "lengthChange": false,
       "searching": true,
-      "ordering": true,
       "info": true,
       "autoWidth": false
     });
   });
+</script>
+
+<script>
+    $(function() {
+        $(".knob").knob({
+            "min":0,
+            "max":100,
+            "fgColor":"#FF0000"
+            
+        });
+    });
 </script>
