@@ -215,12 +215,15 @@ class Paginas extends CI_Controller {
 	}
 
 	public function trayectoria(){
-		
-		$data['alumnos'] = $this->Alumnos_model->getAlumnos();
-	
 		$data['clave'] = $this->session->userdata['clave'];
+		$data['alumnos'] = $this->Alumnos_model->getAlumnos();
+		$data['semestres'] = $this->Alumnos_model-> getSemestreXAlumno($data['clave']);
+		$data['calificaciones'] = $this->Alumnos_model-> getMateriasAlumno($data['clave']);
 		$this->vista('alumnoTrayectoria',$data);
 
+
 	}
+
+	
 
 }
