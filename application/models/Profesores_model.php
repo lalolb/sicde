@@ -25,6 +25,12 @@ class Profesores_model extends CI_Model{
 		return $result->row_array();
 	}
 
+	public function getDomicilioProfesor($clave){
+		$sql = "SELECT d.*, p.clave as cve_profesor FROM domicilio AS d INNER JOIN profesor AS p ON p.clave='".$clave."' AND p.cve_datos=d.clave";
+		$result = $this->db->query($sql);
+		return $result->row_array();
+	}
+
 	public function getProfesores(){
 		$this->db->select('*');    
 		$this->db->from('datos_personales');

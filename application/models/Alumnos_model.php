@@ -39,6 +39,12 @@ class Alumnos_model extends CI_Model {
 		return $result->row_array();
 	}
 
+	public function getDomicilioAlumno($clave){
+		$sql = "SELECT d.*, a.clave as cve_alumno FROM domicilio AS d INNER JOIN alumno AS a ON a.clave=".$clave." AND a.cve_datos=d.clave";
+		$result = $this->db->query($sql);
+		return $result->row_array();
+	}
+
 	public function deleteAlumno($alumno,$datos,$domicilio){
 		$this->db->where('clave',$alumno);
 		$this->db->delete('alumno');
