@@ -111,6 +111,20 @@ JOIN grupo AS g ON g.clave = axg.cve_grupo INNER JOIN semestre AS s ON s.clave =
 calificacion AS c ON c.clave = cve_calificacion  WHERE cve_alumno='.$cve_alumno);
 		return $result->result_array();
 	}
+
+	public function cambiarFoto($foto, $clave){
+		$datos = $this->db->query("SELECT cve_datos FROM alumno WHERE clave=".$clave);
+		$datos = $datos->row_array();
+
+		return $this->db->query('UPDATE datos_personales SET foto=\''.$foto.'\' WHERE clave='.$clave);
+	}
+
+	public function cambiarPass($clave, $antigua, $nueva){
+		$antigua = hash('md5', $antigua);
+		$nueva = hash('md5', $nueva);
+		$query = "UPDATE alumno SET password='".$nueva."' WHERE clave=".$clave." AND password='".$antigua."'";
+		return $this->db->query($query);
+	}
 	
 
 }

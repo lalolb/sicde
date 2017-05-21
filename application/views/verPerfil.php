@@ -1,3 +1,9 @@
+  <style type="text/css">
+    .foto{
+      max-width: 250px;
+      max-height: 250px;
+    }
+  </style>
   <!-- =============================================== -->
   <!-- Página o contenido principal -->
   <!-- Content Wrapper. Contains page content -->
@@ -23,7 +29,8 @@
         </div>
         <div class="box-body">
           <div class="col-md-4">
-            <img src="<?php echo base_url() ?>assets/dist/img/avatar04.png" class="img-circle" alt="User Image">
+            <img src="<?php echo base_url('uploads/'.$foto) ?>" class="img-circle foto" alt="User Image">
+            <a href="<?php echo site_url('Paginas/cambiarFoto') ?>" class="btn btn-primary">Cambiar</a>
           </div>
           <div class="col-md-4">
           <p><strong>No. cuenta:</strong> <?php echo $clave ?></p>

@@ -23,6 +23,7 @@ class Paginas extends CI_Controller {
 		} else {
 			$data['tipo'] = $this->session->userdata['tipo'];
 			$data['nombre'] = $this->session->userdata['nombre'];
+			$data['foto'] = $this->session->userdata['foto'];
 			$this->load->view('templates/header.php',$data);
 			$this->load->view('menus/'.$data['tipo']);//$data['tipo'] = admin, alumno, profe
 			$this->load->view($pagina.'.php');//Contneido principal
@@ -185,6 +186,11 @@ class Paginas extends CI_Controller {
 		$this->vista('verDomicilio',$data);
 	}
 
+	public function cambiarFoto($error = null){
+		$data['error'] = $error;
+		$this->vista('cambiarFoto',$data);
+	}
+
 	public function domicilioModificar($cve_domicilio){
 		$data['domicilio'] = $this->Domicilio_model->getDomicilio($cve_domicilio);
 		$this->vista('domicilioModificar',$data);
@@ -198,6 +204,11 @@ class Paginas extends CI_Controller {
 	public function verGrupo($clave){
 		$data['alumnos'] = $this->Grupos_model->getGrupo($clave);
 		$this->vista('verGrupo',$data);
+	}
+
+	public function cambiarPass($error = null){
+		$data['error'] = $error;
+		$this->vista('cambiarPass',$data);
 	}
 
 	public function calificar($alumno,$calif)
