@@ -11,6 +11,8 @@ class Paginas extends CI_Controller {
         $this->load->model('Grupos_model');
         $this->load->model('Profesores_model');
         $this->load->model('Semestres_model');
+        $this->load->model('Calificaciones_model');
+        $this->load->model('Domicilio_model');
     }
 
 	public function vista($pagina = 'index', $data = null){
@@ -170,6 +172,39 @@ class Paginas extends CI_Controller {
 			$data['humano'] = $this->Profesores_model->getProfesor($data['clave']);
 		}
 		$this->vista('verPerfil',$data);
+	}
+
+	public function verDomicilio(){
+		$data['clave'] = $this->session->userdata['clave'];
+		$data['tipo'] = $this->session->userdata['tipo'];
+		if ($data['tipo'] == "alumno") {
+			$data['humano'] = $this->Alumnos_model->getDomicilioAlumno($data['clave']);
+		}else{
+			$data['humano'] = $this->Profesores_model->getDomicilioProfesor($data['clave']);
+		}
+		$this->vista('verDomicilio',$data);
+	}
+
+	public function domicilioModificar($cve_domicilio){
+		$data['domicilio'] = $this->Domicilio_model->getDomicilio($cve_domicilio);
+		$this->vista('domicilioModificar',$data);
+	}
+
+	public function verGrupos(){
+		$data['grupos'] = $this->Grupos_model->getGruposProfe($this->session->userdata['clave']);
+		$this->vista('verGrupos',$data);
+	}
+
+	public function verGrupo($clave){
+		$data['alumnos'] = $this->Grupos_model->getGrupo($clave);
+		$this->vista('verGrupo',$data);
+	}
+
+	public function calificar($alumno,$calif)
+	{
+		$data['alumno'] = $this->Alumnos_model->getAlumno($alumno);
+		$data['calificaciones'] = $this->Calificaciones_model->getCalificacion($calif);
+		$this->vista('calificar',$data);
 	}
 
 	public function inscripciones(){

@@ -27,7 +27,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo site_url('/Paginas/verPerfil/')?>"><i class="fa fa-circle-o"></i>Datos generales</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Domicilio</a></li>
+            <li><a href="<?php echo site_url('/Paginas/verDomicilio/')?>"><i class="fa fa-circle-o"></i>Domicilio</a></li>
           </ul>
         </li>
         <!-- Para que un menu se encuentre abierto se utiliza la clase treeview active-->
@@ -39,7 +39,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i>Consultar Grupos</a></li>
+            <li><a href="<?php echo site_url('/Paginas/verGrupos/')?>"><i class="fa fa-circle-o"></i>Consultar Grupos</a></li>
           </ul>
         </li>
     </section>

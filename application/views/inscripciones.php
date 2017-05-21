@@ -67,7 +67,7 @@
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button type="submit" class="btn btn-info pull-right">Buscar</button>
+            <button type="submit" class="btn btn-info pull-right">Guardar</button>
           </div>
           <!-- /.box-footer -->
         </form>

@@ -36,6 +36,18 @@ class Grupos_model extends CI_Model {
 
     public function eliminarGrupo($clave){
 		$this->db->delete('grupo', array('clave' => $clave)); 
-
     }
+
+    public function getGruposProfe($cve_profe){
+    	$query = "SELECT g.clave, m.nombre, g.cve_profesor, g.capacidad, g.horario FROM grupo as g INNER JOIN materia as m ON m.clave=g.cve_materia WHERE cve_profesor='".$cve_profe."'";
+    	$result = $this->db->query($query);
+    	return $result->result_array();
+    }
+
+    public function getGrupo($cve_grupo){
+    	$query = "SELECT a.clave as cuenta, dp.nombre, dp.paterno, dp.materno, c.* from datos_personales as dp inner join alumno as a on a.cve_datos = dp.clave inner join alumnos_x_grupo as axg on axg.cve_alumno=a.clave inner join calificacion as c on c.clave = axg.cve_calificacion where axg.cve_grupo=".$cve_grupo;
+    	$result = $this->db->query($query);
+    	return $result->result_array();
+    }
+
 }
