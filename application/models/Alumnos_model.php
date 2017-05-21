@@ -93,18 +93,26 @@ class Alumnos_model extends CI_Model {
 
 	public function  getSemestreXAlumno($cve_alumno){
 
-		$result = $this->db->query('SELECT s.anio,s.letra, axs.situacion, s.clave FROM  semestre AS s INNER JOIN alumno_x_semestre AS axs ON  s.clave=axs.cve_semestre WHERE axs.cve_alumno='.$cve_alumno.' ORDER BY anio');
+		$result = $this->db->query('SELECT s.anio,s.letra, axs.cve_alumno, axs.cve_semestre, axs.situacion, s.clave FROM  semestre AS s INNER JOIN alumno_x_semestre AS axs ON  s.clave=axs.cve_semestre WHERE axs.cve_alumno='.$cve_alumno.' ORDER BY cve_semestre');  //order by anio inicialmente
 		return $result->result_array();
 
 
 	}
 
 	public function getMateriasAlumno($cve_alumno){
-		$result = $this->db->query('SELECT c.ordinario, c.extra, c.titulo, c.aprobado, axg.cve_calificacion, axg.cve_semestre, s.anio, s.letra , m.nombre FROM alumnos_x_grupo AS axg INNER 
+		$result = $this->db->query('SELECT c.ordinario, c.extra, c.titulo, c.aprobado, axg.cve_calificacion, axg.cve_semestre, axg.cve_grupo, s.anio, s.letra , m.nombre, m.clave, g.cve_profesor, g.horario FROM alumnos_x_grupo AS axg INNER 
 JOIN grupo AS g ON g.clave = axg.cve_grupo INNER JOIN semestre AS s ON s.clave = axg.cve_semestre INNER JOIN materia AS m ON  m.clave=g.cve_materia INNER JOIN 
 calificacion AS c ON c.clave = cve_calificacion  WHERE cve_alumno='.$cve_alumno);
 		return $result->result_array();
 	}
 	
+
+	public function getCreditosAlumno($cve_alumno){
+		$result = $this->db->query('SELECT m.creditos , m.clave, axg.cve_grupo, axg.cve_alumno , axg.cve_semestre, c.aprobado FROM  materia AS m 
+INNER JOIN grupo AS g ON g.cve_materia= m.clave INNER JOIN alumnos_x_grupo AS axg
+ON axg.cve_grupo = g.clave  INNER JOIN calificacion AS c
+ON axg.cve_calificacion= c.clave WHERE c.aprobado =1 AND axg.cve_alumno='.$cve_alumno);
+		return $result->result_array();
+	}
 
 }
