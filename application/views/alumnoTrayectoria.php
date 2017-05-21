@@ -248,19 +248,18 @@
                               }
                              }
                              if($calificacion['ordinario']!="--" && $calificacion['extra']!="NP" && $calificacion['extra']!="SD"){
-                                if($calificacion['extra']<6){
+                                if($calificacion['ordinario']<6){
                                   $i++;
                               }
                              }
 
                         }
                       }
-                      echo $i;
+                   //   echo $i;
                      
                     }
                   }
 
-                  $indicador = "nio se"; 
                                     
                   foreach ($alumnos as $key => $alumno) {
                     if($alumno['clave']==$clave){
@@ -289,10 +288,11 @@
                       echo "<td>".$promedioG;
                       echo "</tr>";
 
+                      $ultpP = count($semestres)-1;
                       echo "<tr>";
                       echo "<td>Situación de regular o irregular";          
                       echo "</td>";
-                      echo "<td>".$indicador;
+                      echo "<td>".$semestres[$ultpP]['situacion'];
                       echo "</tr>";
 
                      
@@ -311,11 +311,20 @@
                 <div class="row">
                   <div class="col-xs-6 col-md-3 text-center">
                   <?php
-                 
-                    $valor=390;
+                    $credTot=0;
+                    foreach ($alumnos as $key => $alumno) {
+                     if($alumno['clave']==$clave){
+                        foreach ($creditos as $key => $credito) {
+                         $credTot =$credito['creditos']+$credTot;
+                       }
+                     }
+                    }
+                   // echo "CREDITOS= ".$credTot;
+                     
+                    $valor=$credTot;
                     $porcentaje = ($valor*100)/430;
                     
-                    echo "<input type=\"text\" class=\"knob\" value=\"".$porcentaje."\" data-width=\"120\" data-height=\"120\" data-fgColor=\"#3c8dbc\" data-readonly=\"true\">";
+                    echo "<input type=\"text\" class=\"knob1\" value=\"".$valor."\" data-width=\"120\" data-height=\"120\" data-fgColor=\"#3c8dbc\" data-readonly=\"true\">";
                     ?>
                     <div class="knob-label">Créditos Acumulados</div>
                   </div>          
@@ -325,12 +334,12 @@
                  
                   <div class="col-xs-6 col-md-3 text-center">
                   <?php
-                    $valor=390;
-                    $porcentaje = ($valor*100)/430;
+                    $valor=$cont2;
+                    $porcentaje = ($valor*100)/20;
                     
-                    echo "<input type=\"text\" class=\"knob\" value=\"".$porcentaje."\" data-width=\"120\" data-height=\"120\" data-fgColor=\"#3c8dbc\" data-readonly=\"true\">";
+                    echo "<input type=\"text\" class=\"knob\" value=\"".$valor."\" data-width=\"120\" data-height=\"120\" data-fgColor=\"#39CCCC\" data-readonly=\"true\">";
                     ?>
-                    <div class="knob-label">Exámenes Reprobados</div>
+                    <div class="knob-label">Exámenes Reprobados (máx 20)</div>
                   </div>          
                 </div>
 
@@ -373,8 +382,14 @@
     $(function() {
         $(".knob").knob({
             "min":0,
-            "max":100,
-            "fgColor":"#FF0000"
+            "max":20,
+            "fgColor":"#39CCCC"
+            
+        });
+        $(".knob1").knob({
+            "min":0,
+            "max":430,
+            "fgColor":"#932ab6"
             
         });
     });

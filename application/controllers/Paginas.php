@@ -230,11 +230,33 @@ class Paginas extends CI_Controller {
 		$data['alumnos'] = $this->Alumnos_model->getAlumnos();
 		$data['semestres'] = $this->Alumnos_model-> getSemestreXAlumno($data['clave']);
 		$data['calificaciones'] = $this->Alumnos_model-> getMateriasAlumno($data['clave']);
+		$data['creditos'] = $this->Alumnos_model-> getCreditosAlumno($data['clave']);
 		$this->vista('alumnoTrayectoria',$data);
 
 
 	}
 
-	
+	public function ciclo(){
+		$data['clave'] = $this->session->userdata['clave'];
+		$data['alumnos'] = $this->Alumnos_model->getAlumnos();
+		$data['semestres'] = $this->Alumnos_model-> getSemestreXAlumno($data['clave']);
+		$data['calificaciones'] = $this->Alumnos_model-> getMateriasAlumno($data['clave']);
+		$data['creditos'] = $this->Alumnos_model-> getCreditosAlumno($data['clave']);
+		$this->vista('analisisCiclo',$data);
+
+
+	}
+
+	public function periodo(){
+		$data['clave'] = $this->session->userdata['clave'];
+		$data['idSemestres'] = $this->input->post('cve_s');
+		$data['profesores'] = $this->Profesores_model->getProfesores();
+		$data['alumnos'] = $this->Alumnos_model->getAlumnos();
+		$data['semestres'] = $this->Alumnos_model-> getSemestreXAlumno($data['clave']);
+		$data['calificaciones'] = $this->Alumnos_model-> getMateriasAlumno($data['clave']);
+		$data['creditos'] = $this->Alumnos_model-> getCreditosAlumno($data['clave']);
+		$this->vista('analisisCicloEspecifico',$data);
+
+	}
 
 }
