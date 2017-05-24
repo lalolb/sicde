@@ -71,7 +71,8 @@ class Alumnos_model extends CI_Model {
 
 	public function alumnoInscrito($cve_alumno, $cve_semestre){
 		$result = $this->db->query('SELECT * FROM alumno_x_semestre WHERE cve_alumno='.$cve_alumno.' AND cve_semestre='.$cve_semestre);
-		if (empty($result->result_array())) {
+		$result = $result->result_array();
+		if (empty($result)) {
 			return false;
 		}else{
 			return true;
