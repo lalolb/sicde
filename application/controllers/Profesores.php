@@ -27,6 +27,7 @@ class Profesores extends CI_Controller {
 		$generales['clave_imss']=$this->input->post('imss');
 		$generales['grupo_indigena']=$this->input->post('grupo_i');
 		$generales['dialecto_indigena']=$this->input->post('dialecto_i');
+        $generales['foto'] = "avatar04.png";
 
 		//El alumno llena sus datos domiciliares después, así que mandamos un arreglo vacío
 		$domicilio['calle'] = '';

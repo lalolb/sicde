@@ -70,4 +70,18 @@ class Profesores_model extends CI_Model{
 		$result = $this->db->get('datos_personales');
 		return $result->row_array();
 	}
+
+	public function cambiarFoto($foto, $clave){
+		$datos = $this->db->query("SELECT cve_datos FROM profesor WHERE clave='".$clave."'");
+		$datos = $datos->row_array();
+
+		return $this->db->query("UPDATE datos_personales SET foto='".$foto."' WHERE clave='".$clave."'");
+	}
+
+	public function cambiarPass($clave, $antigua, $nueva){
+		$antigua = hash('md5', $antigua);
+		$nueva = hash('md5', $nueva);
+		$query = "UPDATE profesor SET password='".$nueva."' WHERE clave='".$clave."' AND password='".$antigua."'";
+		return $this->db->query($query);
+	}
 }

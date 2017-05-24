@@ -71,7 +71,8 @@ class Alumnos_model extends CI_Model {
 
 	public function alumnoInscrito($cve_alumno, $cve_semestre){
 		$result = $this->db->query('SELECT * FROM alumno_x_semestre WHERE cve_alumno='.$cve_alumno.' AND cve_semestre='.$cve_semestre);
-		if (empty($result->result_array())) {
+		$result = $result->result_array();
+		if (empty($result)) {
 			return false;
 		}else{
 			return true;
@@ -86,9 +87,9 @@ class Alumnos_model extends CI_Model {
 			);
 			$this->db->insert('alumno_x_semestre',$axs);
 		}
-		$calificacion = array('ordinario' => '0.0',
-			'extra' => '0.0',
-			'titulo' => '0.0',
+		$calificacion = array('ordinario' => '--',
+			'extra' => '--',
+			'titulo' => '--',
 			'aprobado' => 1 );
 
 		$this->db->insert('calificacion',$calificacion);
@@ -110,6 +111,20 @@ class Alumnos_model extends CI_Model {
 JOIN grupo AS g ON g.clave = axg.cve_grupo INNER JOIN semestre AS s ON s.clave = axg.cve_semestre INNER JOIN materia AS m ON  m.clave=g.cve_materia INNER JOIN 
 calificacion AS c ON c.clave = cve_calificacion  WHERE cve_alumno='.$cve_alumno);
 		return $result->result_array();
+	}
+
+	public function cambiarFoto($foto, $clave){
+		$datos = $this->db->query("SELECT cve_datos FROM alumno WHERE clave=".$clave);
+		$datos = $datos->row_array();
+
+		return $this->db->query('UPDATE datos_personales SET foto=\''.$foto.'\' WHERE clave='.$clave);
+	}
+
+	public function cambiarPass($clave, $antigua, $nueva){
+		$antigua = hash('md5', $antigua);
+		$nueva = hash('md5', $nueva);
+		$query = "UPDATE alumno SET password='".$nueva."' WHERE clave=".$clave." AND password='".$antigua."'";
+		return $this->db->query($query);
 	}
 	
 

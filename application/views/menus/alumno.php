@@ -7,7 +7,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url() ?>assets/dist/img/avatar04.png" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url('uploads/'.$foto) ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $nombre?></p>
@@ -28,6 +28,7 @@
           <ul class="treeview-menu">
             <li><a href="<?php echo site_url('/Paginas/verPerfil/')?>"><i class="fa fa-circle-o"></i>Datos generales</a></li>
             <li><a href="<?php echo site_url('/Paginas/verDomicilio/')?>"><i class="fa fa-circle-o"></i>Domicilio</a></li>
+            <li><a href="<?php echo site_url('/Paginas/cambiarPass/')?>"><i class="fa fa-circle-o"></i>Cambiar contraseña</a></li>
           </ul>
         </li>
         <!-- Para que un menu se encuentre abierto se utiliza la clase treeview active-->
