@@ -87,9 +87,9 @@ class Alumnos_model extends CI_Model {
 			);
 			$this->db->insert('alumno_x_semestre',$axs);
 		}
-		$calificacion = array('ordinario' => '0.0',
-			'extra' => '0.0',
-			'titulo' => '0.0',
+		$calificacion = array('ordinario' => '--',
+			'extra' => '--',
+			'titulo' => '--',
 			'aprobado' => 1 );
 
 		$this->db->insert('calificacion',$calificacion);
