@@ -31,7 +31,7 @@
           <div class="box-body">
             <div class="form-group">
                   <label for="foto">Selecciona la foto a subir</label>
-                  <input type="file" id="foto" name="foto">
+                  <input type="file" id="foto" name="foto" required>
                   <p class="help-block">La foto debe de ser en formato JPG.</p>
             </div>
           </div>

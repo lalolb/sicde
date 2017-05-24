@@ -109,4 +109,13 @@ class Usuarios extends CI_Controller {
         $this->Profesores_model->cambiarPass($clave,$antigua,$nueva);
         redirect($this->config->site_url()."/Paginas/vista/exito");
     }
+
+    public function alumnoCambiarPass()
+    {
+        $clave = $this->session->userdata['clave'];
+        $antigua = $this->input->post('password');
+        $nueva = $this->input->post('password_new_1');
+        $this->Alumnos_model->cambiarPass($clave,$antigua,$nueva);
+        redirect($this->config->site_url()."/Paginas/vista/exito");
+    }
 }
