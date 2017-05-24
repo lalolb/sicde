@@ -47,7 +47,7 @@
                 </thead>
                 <tbody>
                 <?php
-
+                  $indicador=0;
                   
                   foreach ($alumnos as $key => $alumno) {
                     if($alumno['clave']==$clave){
@@ -83,11 +83,44 @@
                       echo "<td>".$semestres[$tot]['anio'].$semestres[$tot]['letra'];
                       echo "</tr>";
 
+                     
+
+                       foreach ($calificaciones as $key => $calificacion) {
+                        if($calificacion['cve_semestre']!=$semestres[$tot]['clave']){
+                         //echo $semestres[$ultP]['anio']." clave semestre:".$semestres[$ultP]['clave'];
+                            if($calificacion['titulo']!="--" && $calificacion['titulo']!="NP" && $calificacion['titulo']!="SD"){
+                              if($calificacion['titulo']<6){
+                                $inicador++;
+                              }
+                            }
+                            if($calificacion['extra']!="--" && $calificacion['extra']!="NP" && $calificacion['extra']!="SD"){
+                                if($calificacion['extra']<6){
+                                  $indicador++;
+                              }
+                             }
+                             if($calificacion['ordinario']!="--" && $calificacion['extra']!="NP" && $calificacion['extra']!="SD"){
+                                if($calificacion['ordinario']<6){
+                                  $indicador++;
+                              }
+                             }
+
+                        }
+                      }
+                       if($indicador!=0){
+                          $semestres[$tot]['situacion'] = "Irregular";
+                      }else{
+                          $semestres[$tot]['situacion'] = "Regurar";
+
+                      }
+                      
+
                       echo "<tr>";
                       echo "<td>Situación";          
                       echo "</td>";
                       echo "<td>".$semestres[$tot]['situacion'];
                       echo "</tr>";
+
+
                      }                  
                    }
 
@@ -98,7 +131,7 @@
               </table>
                 
               </div>
-              <!-- /.tab-pane -->
+              <!-- /.tab CALIFICACIONES-->
               <div class="tab-pane" id="tab_2">
                 <table id="example2" class="table table-bordered table-hover">
                 <thead>
@@ -115,6 +148,7 @@
                 <tbody>
                   <?php
 
+ 
                   $cont1=0; 
                   $cont2=0; 
                  foreach ($alumnos as $key => $alumno) {
@@ -131,6 +165,29 @@
                         echo "</td>"; 
                         echo "<td>".$calificacion['titulo'];
                         echo "</td>"; 
+
+                        if($calificacion['titulo']=="--"||$calificacion['titulo']=="NP"||$calificacion['titulo']=="SD"){
+                              if($calificacion['extra']=="--"||$calificacion['extra']=="NP"||$calificacion['extra']=="SD"){
+                                if($calificacion['ordinario']<6){
+                                    $calificacion['aprobado'] = 0;
+                                }else{
+                                     $calificacion['aprobado'] = 1;
+                                }
+                              }else{
+                                if($calificacion['extra']<6){
+                                    $calificacion['extra'] = 0;
+                                }else{
+                                     $calificacion['extra'] = 1;
+                                }
+                              }
+                            }else{
+                              if($calificacion['titulo']<6){
+                                    $calificacion['titulo'] = 0;
+                                }else{
+                                     $calificacion['titulo'] = 1;
+                                }
+                            }
+
                         if($calificacion['aprobado']==1){
                           echo "<td> Aprobada";
                           echo "</td>";
@@ -229,6 +286,7 @@
                   }
 
                   //EXAMENES REPROBADOS
+                  //AQUI
                   $i =0;
                 
                   foreach ($alumnos as $key => $alumno) {
@@ -290,6 +348,12 @@
 
                       $ultpP = count($semestres)-1;
                       echo "<tr>";
+                      if($indicador!=0){
+                          $semestres[$ultpP]['situacion'] = "Irregular";
+                      }else{
+                          $semestres[$ultpP]['situacion'] = "Regurar";
+
+                      }
                       echo "<td>Situación de regular o irregular";          
                       echo "</td>";
                       echo "<td>".$semestres[$ultpP]['situacion'];
