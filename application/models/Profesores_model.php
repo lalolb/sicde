@@ -75,7 +75,7 @@ class Profesores_model extends CI_Model{
 		$datos = $this->db->query("SELECT cve_datos FROM profesor WHERE clave='".$clave."'");
 		$datos = $datos->row_array();
 
-		return $this->db->query("UPDATE datos_personales SET foto='".$foto."' WHERE clave='".$clave."'");
+		return $this->db->query("UPDATE datos_personales SET foto='".$foto."' WHERE clave=".$datos['cve_datos']);
 	}
 
 	public function cambiarPass($clave, $antigua, $nueva){
