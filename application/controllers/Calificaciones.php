@@ -9,15 +9,22 @@ class Calificaciones extends CI_Controller {
     }
 
     public function calificar(){
-    	//Obtenemos los datos generales
-    	$calif['ordinario']=$this->input->post('ordinario');
-    	$calif['extra']=$this->input->post('extra');
-    	$calif['titulo']=$this->input->post('titulo');
-    	$calif['aprobado']=1;
+    	$examen=$this->input->post('examen');
+    	$calif=$this->input->post('calificacion');
+
+        if (($calif == "--") || ($calif == "SD") || ($calif == "NP")) {
+            $aprobado=0;
+        }else{
+            if (floatval($calif) >= 6) {
+                $aprobado=1;
+            }else{
+                $aprobado=0;
+            }
+        }
 
         $clave = $this->input->post('clave');
 
-		$result = $this->Calificaciones_model->califica($calif, $clave);
+		$result = $this->Calificaciones_model->califica($examen, $calif, $aprobado, $clave);
 		redirect($this->config->site_url()."/Paginas/verGrupo/".$result);
 
     }

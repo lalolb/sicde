@@ -106,7 +106,8 @@
     }
 
     function enviarForm() {
-      if (todoBien){
+      var antigua = $("#password").val();
+      if (todoBien && antigua!=''){
         document.getElementById("formularioPass").submit();
       }else{
         $("#error").css('display','block');

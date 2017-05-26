@@ -13,10 +13,13 @@ class Calificaciones_model extends CI_Model{
 		return $result->row_array();
 	}
 
-	public function califica($calif, $clave)
+	public function califica($examen, $calif, $aprobado, $clave)
 	{
-		$this->db->where('clave',$clave);
-		$this->db->update('calificacion',$calif);
+		/*$this->db->where('clave',$clave);
+		$this->db->update('calificacion',$calif);*/
+
+		$query = "UPDATE calificacion SET ".$examen."='".$calif."', aprobado=".$aprobado." where clave=".$clave;
+		$this->db->query($query);
 
 		$this->db->where('cve_calificacion',$clave);
 		$result = $this->db->get('alumnos_x_grupo');

@@ -89,6 +89,14 @@
             <span>Inscripciones</span>
           </a>
         </li>
+
+        <!-- OPCIONES PARA ESTADÍSTICAS -->
+        <li class="treeview">
+          <a href="<?php echo site_url(); ?>/Paginas/estadisticas">
+            <i class="fa fa-pie-chart"></i>
+            <span>Estadísticas</span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

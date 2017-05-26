@@ -20,23 +20,30 @@
           <form class="form-horizontal" action="<?php echo site_url()?>/Calificaciones/calificar" method="post">
           <input type="hidden" name="clave" value="<?php echo $calificaciones['clave'] ?>">
           <div class="form-group">
-            <label for="ordinario" class="col-sm-4 control-label">Ordinario</label>
+            <label for="examen" class="col-sm-4 control-label">Examen a calificar</label>
               <div class="col-sm-4">
-                <input type="text" class="form-control" id="ordinario" name="ordinario" placeholder="Ordinario" value="<?php echo $calificaciones['ordinario'] ?>">
+                <select class="form-control" id="examen" name="examen" required>
+                <?php 
+                    if (($calificaciones['ordinario']=='--')) {
+                      echo '<option value="ordinario">Ordinario</option>';
+                    }
+
+                    if (($calificaciones['extra']=='--')) {
+                      echo '<option value="extra">Extra</option>';
+                    }
+
+                    if (($calificaciones['titulo']=='--')) {
+                      echo '<option value="titulo">Título</option>';
+                    }
+                ?>
+                </select>
               </div>
           </div>
 
           <div class="form-group">
-            <label for="extra" class="col-sm-4 control-label">Extra</label>
+            <label for="calificacion" class="col-sm-4 control-label">Calificación</label>
               <div class="col-sm-4">
-                <input type="text" class="form-control" id="extra" name="extra" placeholder="Extra" value="<?php echo $calificaciones['extra'] ?>">
-              </div>
-          </div>
-
-          <div class="form-group">
-            <label for="titulo" class="col-sm-4 control-label">Título</label>
-              <div class="col-sm-4">
-                <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título" value="<?php echo $calificaciones['titulo'] ?>">
+                <input type="text" class="form-control" id="calificacion" name="calificacion" placeholder="Calificación" value="<?php echo $calificaciones['extra'] ?>" required>
               </div>
           </div>
         </div>

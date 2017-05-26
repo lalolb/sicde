@@ -88,7 +88,7 @@
                        foreach ($calificaciones as $key => $calificacion) {
                         if($calificacion['cve_semestre']!=$semestres[$tot]['clave']){
                          //echo $semestres[$ultP]['anio']." clave semestre:".$semestres[$ultP]['clave'];
-                            if($calificacion['titulo']!="--" && $calificacion['titulo']!="NP" && $calificacion['titulo']!="SD"){
+                            /*if($calificacion['titulo']!="--" && $calificacion['titulo']!="NP" && $calificacion['titulo']!="SD"){
                               if($calificacion['titulo']<6){
                                 $inicador++;
                               }
@@ -102,6 +102,9 @@
                                 if($calificacion['ordinario']<6){
                                   $indicador++;
                               }
+                             }*/
+                             if ($calificacion['aprobado']=='0') {
+                               $indicador++;
                              }
 
                         }
@@ -109,7 +112,7 @@
                        if($indicador!=0){
                           $semestres[$tot]['situacion'] = "Irregular";
                       }else{
-                          $semestres[$tot]['situacion'] = "Regurar";
+                          $semestres[$tot]['situacion'] = "Regular";
 
                       }
                       
@@ -133,7 +136,7 @@
               </div>
               <!-- /.tab CALIFICACIONES-->
               <div class="tab-pane" id="tab_2">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="calif" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                   <th>Periodo</th>
@@ -211,6 +214,7 @@
               
                 </tbody>
               </table>
+              <button class="btn btn-primary" onclick="exportar();">Descargar</button>
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_3">
@@ -351,7 +355,7 @@
                       if($indicador!=0){
                           $semestres[$ultpP]['situacion'] = "Irregular";
                       }else{
-                          $semestres[$ultpP]['situacion'] = "Regurar";
+                          $semestres[$ultpP]['situacion'] = "Regular";
 
                       }
                       echo "<td>Situación de regular o irregular";          
@@ -428,6 +432,12 @@
 <script src="<?php echo base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/knob/jquery.knob.js"></script>
 
+<!-- Exportar tabla a PDF -->
+<script type="text/javascript" src="<?php echo base_url() ?>assets/plugins/jspdf/tableExport.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/plugins/jspdf/jquery.base64.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/plugins/jspdf/jspdf/libs/sprintf.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/plugins/jspdf/jspdf/jspdf.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/plugins/jspdf/jspdf/libs/base64.js"></script>
 
 <script>
   $(function () {
@@ -457,4 +467,10 @@
             
         });
     });
+</script>
+
+<script type="text/javascript">
+  function exportar() {
+    $('#calif').tableExport({type:'pdf',pdfFontSize:'7',escape:'false',htmlContent:'true'});
+  }
 </script>

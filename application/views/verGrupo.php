@@ -43,7 +43,11 @@
                   echo "<td>".$alumno['ordinario']."</td>";
                   echo "<td>".$alumno['extra']."</td>";
                   echo "<td>".$alumno['titulo']."</td>";
-                  echo "<td class=\"noExl\"><a href=\"".site_url('Paginas/calificar/'.$alumno['cuenta']).'/'.$alumno['clave']."\" class=\"btn btn-block btn-primary\">Calificar</a></td>";
+                  if ($alumno['aprobado']=='0') {
+                    echo "<td class=\"noExl\"><a href=\"".site_url('Paginas/calificar/'.$alumno['cuenta']).'/'.$alumno['clave']."\" class=\"btn btn-block btn-primary\">Calificar</a></td>";
+                  }else{
+                    echo "<td></td>";
+                  }
                 echo "</tr>";
               }
 

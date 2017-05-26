@@ -74,7 +74,7 @@ class Usuarios extends CI_Controller {
         $config['allowed_types'] = 'jpg';
         $config['max_size'] = 100;
         $config['max_width'] = 1024;
-        $config['max_height'] = 768;
+        $config['max_height'] = 720;
 
         $this->load->library('upload', $config);
 
@@ -84,7 +84,7 @@ class Usuarios extends CI_Controller {
         }
 
         if ( ! $this->upload->do_upload('foto')){ //Subimos la foto nueva
-            //Si hay error lo regresa para enviar la foto
+            //Si hay error lo regresa
             $error = array('error' => $this->upload->display_errors());
             redirect($this->config->site_url()."/Paginas/cambiarFoto/error");
         }else{

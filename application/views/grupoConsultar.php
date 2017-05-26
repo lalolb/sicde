@@ -29,8 +29,8 @@
                 <th>Clave</th>
                 <th>Profesor </th>
                 <th>Materia</th>
-                <th>Capacidad</th>
                 <th>Horarios</th>
+                <th></th>
             </tr>
         </thead>
          <tbody>
@@ -40,7 +40,6 @@
                   echo "<td>".$grupo['clave']."</td>";
                   echo "<td>".$grupo['nombre']." ".$grupo['paterno']." ".$grupo['materno']."</td>";
                   echo "<td>".$grupo['materia']."</td>";
-                  echo "<td>".$grupo['capacidad']."</td>";
 
                   $dias = explode(",", $grupo['horario']);
                   echo "<td>";
@@ -49,6 +48,8 @@
                     $i = $i +2;
                   }
                   echo  "</td>";
+
+                  echo "<td><a href=\"".site_url('Paginas/verGrupo/'.$grupo['clave'])."\" class=\"btn btn-block btn-primary\">Ver grupo</a></td>";
                   
                 echo "</tr>";
               }

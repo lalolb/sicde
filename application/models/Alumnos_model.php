@@ -90,7 +90,7 @@ class Alumnos_model extends CI_Model {
 		$calificacion = array('ordinario' => '--',
 			'extra' => '--',
 			'titulo' => '--',
-			'aprobado' => 1 );
+			'aprobado' => 0 );
 
 		$this->db->insert('calificacion',$calificacion);
 		$data['cve_calificacion'] = $this->db->insert_id();

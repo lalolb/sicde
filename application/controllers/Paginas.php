@@ -13,6 +13,7 @@ class Paginas extends CI_Controller {
         $this->load->model('Semestres_model');
         $this->load->model('Calificaciones_model');
         $this->load->model('Domicilio_model');
+        $this->load->model('Estadisticas_model');
     }
 
 	public function vista($pagina = 'index', $data = null){
@@ -257,6 +258,20 @@ class Paginas extends CI_Controller {
 		$data['creditos'] = $this->Alumnos_model-> getCreditosAlumno($data['clave']);
 		$this->vista('analisisCicloEspecifico',$data);
 
+	}
+
+	public function estadisticas(){
+		$data['alumnos_M'] = $this->Estadisticas_model->getPersonas('alumno','M');
+		$data['alumnos_F'] = $this->Estadisticas_model->getPersonas('alumno','F');
+		$data['profesores_M'] = $this->Estadisticas_model->getPersonas('profesor','M');
+		$data['profesores_F'] = $this->Estadisticas_model->getPersonas('profesor','F');
+
+		$data['alumnos_edo'] = $this->Estadisticas_model->getPersonasEdo('alumno');
+		$data['alumnos_fuera'] = $this->Estadisticas_model->getPersonasFuera('alumno');
+		$data['profesores_edo'] = $this->Estadisticas_model->getPersonasEdo('profesor');
+		$data['profesores_fuera'] = $this->Estadisticas_model->getPersonasFuera('profesor');
+
+		$this->vista('estadisticas',$data);
 	}
 
 }
